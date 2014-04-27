@@ -17,7 +17,7 @@ function addRecord(record, user, id) {
 
     var s = '';
 
-    s += '<li class="content-item" data-role="collapsible" data-collapsed="false" data-inset="false"';
+    s += '<li class="content-item" data-role="collapsible" data-collapsed="' + (!window.lj_conf.expanded) + '" data-inset="false"';
     s += ' data-iconpos="right" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">';
     s += '<h2>';
     s += '<table class="title-table">';

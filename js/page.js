@@ -146,7 +146,7 @@ function buildPage() {
     s += ' data-page-number=' + createPageNumber();
     s += '>';
 	s += '<div role="main" class="ui-content main-content">';
-	s += '<ul data-role="listview" class="livejournal"></ul>';
+	s += '<ul data-role="listview" data-list-expanded="' + window.lj_conf.expanded + '" class="livejournal"></ul>';
 	s += '</div>';
 	s += '</div>';
 	return s;
