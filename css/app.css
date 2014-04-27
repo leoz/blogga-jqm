@@ -1,0 +1,99 @@
+/* Application CSS */
+
+.main-header {
+	color: #666;
+	font-family: 'Roboto', cursive;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+.main-footer a {
+	font-size: .8em;
+	color: #999;
+	font-family: 'Roboto', cursive;
+	font-weight: 300;
+}
+
+.main-content {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+.avatar-box {
+//	background-color: red;
+}
+
+.avatar-icon {
+    vertical-align: middle;
+	margin-left: 6px;
+	margin-right: 6px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+    width: 48px;
+    height: 48px;
+}
+
+.title-box {
+//	background-color: pink;
+	width:100%;
+}
+
+.title-date {
+	margin-top: 4px;
+	font-weight: bold;
+	font-size: x-small;
+	color: rgba(0, 39, 59, 0.34902);
+}
+
+.title-name {
+	font-weight: bold;
+	color: rgb(42, 90, 138);
+}
+
+.title-user {
+	font-size: x-small;
+	color: rgb(119, 119, 119);
+}
+
+.content-box {
+//	background-color: yellow;
+    white-space: normal;
+}
+
+.content-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.title-table {
+	width:100%;
+    border-collapse: collapse;
+}
+
+.title-table td {
+    padding: 0;
+}
+
+.content-item .ui-collapsible-content {  
+//	background-color: green;
+    padding-bottom: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 3px;
+}
+
+.ui-li-static.ui-collapsible > .ui-collapsible-heading {
+    margin: 0;
+}
+.ui-li-static.ui-collapsible {
+    padding: 0;
+}
+.ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
+    padding: 0;
+    border-top-width: 0;
+}
+.ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
+.ui-li-static.ui-collapsible > .ui-collapsible-content {
+    border-bottom-width: 0;
+}
+
