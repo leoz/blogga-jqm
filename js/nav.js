@@ -2,11 +2,16 @@
 // Navigation
 
 function setActions() {
+    // Header
+	$('#btn_expand').click(function() { onExpand(); });
+    // Panel
+	$('#btn_close').click(function() { onClose(); });
+	$('#btn_change').click(function() { onChange(); });
+    // Navigation
 	$('#btn_last').click(function() { onLast(); });
 	$('#btn_next').click(function() { onNext(); });
 	$('#btn_prev').click(function() { onPrev(); });
 	$('#btn_first').click(function() { onFirst(); });
-	$('#btn_close').click(function() { onClose(); });
 }
 
 function setButtons() {
@@ -111,15 +116,6 @@ function onLast() {
     console.log('Cur: ' + window.pageController.current);
 }
 
-
-function onClose() {
-    window.lj_conf.reset();
-    $('[data-role="page"]').remove();
-    $('[data-role="header"] h1').text( ' - ' );
-    showInitialPage();
-	setButtons();
-}
-
 function canAddNext() {
     return (!isInTransition() && !window.pageController.isLastPage());
 }
@@ -139,4 +135,43 @@ function canDoPrev() {
 function isInTransition() {
 	return ($('body.ui-mobile-viewport-transitioning').length !== 0);
 }
+
+// Panel
+
+function onClose() {
+    window.lj_conf.reset();
+    $('[data-role="page"]').remove();
+    $('[data-role="header"] h1').text( ' - ' );
+    showInitialPage();
+	setButtons();
+}
+
+function onChange() {
+    var journal = $('#journal-input').val();
+    window.lj_conf.setJournal(journal);
+    console.log('onChange: ' + window.lj_conf.journal);
+    onClose();
+}
+
+// Header
+
+function onExpand() {
+    var id = activeListId(activePage());
+    if ($(id).data('list-expanded') === true) {
+        $(id).children().collapsible('collapse');
+        $(id).data('list-expanded', false);
+    }
+    else {
+        $(id).children().collapsible('expand');
+        $(id).data('list-expanded', true);
+    }
+}
+
+function activeListId(page) {
+    var id = '#' + page.attr('id') + ' .main-content .livejournal';
+    return id;
+}
+
+//
+
 

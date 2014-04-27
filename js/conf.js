@@ -10,7 +10,7 @@ window.lj_conf = {
         this.number = 10;
         this.count = 10;
 		this.date = '';
-        this.journal = 'toronto-ru';
+//        this.journal = 'toronto-ru';
     },
     setJournal: function(journal) {
         this.number = 10;

@@ -5,7 +5,11 @@ $(function() {
     $('[data-role="navbar"]').navbar();
     $('[data-role="header"], [data-role="footer"]').toolbar();
     $('[data-role="panel"]').panel();
-    $('.ui-panel-inner').trigger('create');
+    
+    // Set settings
+    $('#journal-input').val(window.lj_conf.journal);
+    $('[data-role="controlgroup"]').enhanceWithin();
+
 	// Set button actions
 	setActions();
 	onClose();

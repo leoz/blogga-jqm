@@ -23,11 +23,17 @@
 
 <div data-role="panel" id="panel_main" data-position="left" data-position-fixed="true" data-display="overlay" data-theme="a">
     <a href="#" id="btn_close" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Close All</a>
+    <label for="journal-input">Journal:</label>
+    <div data-role="controlgroup" data-type="horizontal">
+        <input type="text" name="journal-input" id="journal-input" data-wrapper-class="controlgroup-textinput ui-btn-inline" data-mini="true">
+        <a id="btn_change" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline">Journal</a>
+    </div>
 </div>
 
 <div data-role="header" class="main-header" data-position="fixed" data-theme="a">
     <h1>Header</h1>
     <a href="#panel_main" data-icon="bars" data-iconpos="notext">Panel</a>
+    <a href="#" id="btn_expand" data-icon="grid" data-iconpos="notext">Expand</a>
 </div>
     
 <div data-role="page"></div>
