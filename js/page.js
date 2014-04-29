@@ -130,7 +130,8 @@ function createPageTitle() {
 }
 
 function getJournalPageTitle() {
-    var d = new Date(window.lj_conf.date);
+    var date = window.lj_conf.getPageDate(window.pageController.current);
+    var d = new Date(date);
     var title =  window.lj_conf.journal + ' ' + $.format.date(d, 'dd-MMM-yyyy hh:mm p');
     return title;
 }

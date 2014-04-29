@@ -8,6 +8,7 @@ window.lj_conf = {
     date : null,
     expanded : false,
     journal : null,
+    data : {},
     setCurrentDate: function() {
         this.date = $.format.date(new Date(), this.format);
     },
@@ -19,6 +20,18 @@ window.lj_conf = {
     setJournal: function(journal) {
         this.reset();
         this.journal = journal;
+    },
+    getPageDate: function(page) {
+        if (!this.data[page]) {
+            console.log('getPageDate - NOT found page ' + page);
+            this.data[page] = this.date;
+        }
+        else {
+            console.log('getPageDate - found page ' + page);
+            this.date = this.data[page];
+        }
+        console.log('getPageDate: data - ' + this.data[page]);
+        return this.data[page];
     }
 };
 
