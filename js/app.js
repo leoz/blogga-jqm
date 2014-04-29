@@ -15,6 +15,11 @@ $(function() {
 	onClose();
 });
 
+$(document).on('pagecontainercreate', function() {
+	// Set Journal
+    window.lj_conf.setJournal('toronto-ru');
+});
+
 $(document).on('pagecontainerbeforeshow', function(e, ui) {
 	// Set title
     var title = activePage().data('title');

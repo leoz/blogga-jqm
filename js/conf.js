@@ -4,9 +4,9 @@
 window.lj_conf = {
     number : 10,
     count : 10,
-    date : '',
+    date : null,
     expanded : false,
-    journal : 'toronto-ru',
+    journal : null,
     reset: function () {
         this.number = 10;
         this.count = 10;
