@@ -126,13 +126,19 @@ function createPageId() {
 }
 
 function createPageTitle() {
-	return '"Page ' + window.pageController.current + ' - ' + getJournalPageTitle() + '"';
+	var s = '';
+    s += '"';
+    s += getJournalPageTitle();
+    s += ' (';
+    s += (window.pageController.current + 1);
+    s += ')"';
+	return s;
 }
 
 function getJournalPageTitle() {
     var date = window.lj_conf.getPageDate(window.pageController.current);
     var d = new Date(date);
-    var title =  window.lj_conf.journal + ' ' + $.format.date(d, 'dd-MMM-yyyy hh:mm p');
+    var title =  window.lj_conf.journal + ' ' + $.format.date(d, 'dd/MM/yy');
     return title;
 }
 
