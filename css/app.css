@@ -20,17 +20,16 @@
 }
 
 .avatar-box {
+    width: 54px;
+    height: 54px;
+    text-align: center;
 //	background-color: red;
 }
 
 .avatar-icon {
     vertical-align: middle;
-	margin-left: 6px;
-	margin-right: 6px;
-	margin-top: 3px;
-	margin-bottom: 3px;
-    width: 48px;
-    height: 48px;
+    max-width: 48px;
+    max-height: 48px;
 }
 
 .title-box {
@@ -66,6 +65,7 @@
 }
 
 .title-table {
+    table-layout:fixed;
 	width:100%;
     border-collapse: collapse;
 }
