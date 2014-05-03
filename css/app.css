@@ -47,6 +47,7 @@
 .title-name {
 	font-weight: bold;
 	color: rgb(42, 90, 138);
+    white-space: normal;
 }
 
 .title-user {
