@@ -33,8 +33,24 @@
 }
 
 .title-box {
-//	background-color: pink;
 	width:100%;
+//	background-color: pink;
+}
+
+.comments-box {
+    width: 60px;
+//	background-color: yellow;
+}
+
+.btn-comments {
+    text-align: center !important;
+    background-color: rgb(180, 212, 236) !important;
+    color: rgb(119, 119, 119) !important;
+}
+
+.space-box {
+    width: 46px;
+//	background-color: green;
 }
 
 .title-date {

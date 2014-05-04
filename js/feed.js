@@ -9,6 +9,8 @@ function addRecord(record, user, id) {
 
     var r_avatar = formatAvatar(record);
 
+    var r_button_id = 'btn_' + record.itemid;
+
     var r_title_id = 'title_' + record.itemid;
     var r_title = formatTitle(record, r_title_id, id);
 
@@ -28,17 +30,35 @@ function addRecord(record, user, id) {
     s += '<div class="title-name" id="' + r_title_id + '">' + r_title + '</div>';
     s += '<div class="title-user">' + r_author + '</div>';
     s += '</td>';
+    s += '<td class="comments-box">';  
+    
+    s += '<a href="#" data-role="button" data-shadow="false" class="btn-comments"';
+    s += ' id="' + r_button_id + '">' + record.reply_count + '</a>';
+    
+    s += '</td>';
+    s += '<td class="space-box"></td>';
     s += '</tr>';
     s += '</table>';
     s += '</h2>';
     s += '<div id="' + r_content_id + '" class="content-box">' + r_content + '</div>';
     s += '</li>';
 
-    $(id).append(s);
-    $('.content-item').collapsible();
+    $(id).append(s).enhanceWithin();
+    
+	$('#' + r_button_id).click(function(e) {
+        onComments(r_button_id);
+        e.preventDefault();
+        e.stopPropagation();   
+        e.stopImmediatePropagation();
+	});
+    
     $(id).listview('refresh');
 }
 
+function onComments(id) {
+    alert('onComments: ' + id);
+}
+    
 function doneReading(count, date) {
     window.lj_conf.count = count;
     window.lj_conf.date = date;
