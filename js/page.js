@@ -121,17 +121,12 @@ window.pageController = {
 
 // Create page
 
-function createPageId() {
-	return '"page_' + window.pageController.current + '"';
-}
-
 function createPageTitle() {
 	var s = '';
-    s += '"';
     s += getJournalPageTitle();
     s += ' (';
     s += (window.pageController.current + 1);
-    s += ')"';
+    s += ')';
 	return s;
 }
 
@@ -142,19 +137,20 @@ function getJournalPageTitle() {
     return title;
 }
 
-function createPageNumber() {
-	return '"' + window.pageController.current + '"';
+function buildPage() {
+
+    var page_data = {
+        page_id: 'page_' + window.pageController.current,
+        page_title: createPageTitle(),
+        page_number: window.pageController.current,
+        expanded: window.lj_conf.expanded
+    };
+
+    var t = $.Mustache.render('page-template', page_data);
+
+	return t;
 }
 
-function buildPage() {
-	var s = '';
-	s += '<div data-role="page" id=' + createPageId();
-	s += ' data-title=' + createPageTitle();
-    s += ' data-page-number=' + createPageNumber();
-    s += '>';
-	s += '<div role="main" class="ui-content main-content">';
-	s += '<ul data-role="listview" data-list-expanded="' + window.lj_conf.expanded + '" class="livejournal"></ul>';
-	s += '</div>';
-	s += '</div>';
-	return s;
-}
+//
+
+

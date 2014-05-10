@@ -3,50 +3,29 @@
 
 function addRecord(record, user, id) {
 
-    var r_date = formatDate(record.eventtime);
-
-    var r_author = formatAuthor(record, user);
-
-    var r_avatar = formatAvatar(record);
-
-    var r_button_id = 'btn_' + record.itemid;
-
     var r_title_id = 'title_' + record.itemid;
-    var r_title = formatTitle(record, r_title_id, id);
 
     var r_content_id = 'content_' + record.itemid;
-    var r_content = formatContent(record, r_content_id, id);
 
-    var s = '';
+    var feed_data = {
+        collapsed : (!window.lj_conf.expanded),
+        avatar    : formatAvatar(record),
+        date      : formatDate(record.eventtime),
+        title_id  : r_title_id,
+        title     : formatTitle(record, r_title_id, id),
+        author    : formatAuthor(record, user),
+        button_id : 'btn_' + record.itemid,
+        count     : record.reply_count,
+        content_id: r_content_id,
+        content   : formatContent(record, r_content_id, id)
+    };
 
-    s += '<li class="content-item" data-role="collapsible" data-collapsed="' + (!window.lj_conf.expanded) + '" data-inset="false"';
-    s += ' data-iconpos="right" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">';
-    s += '<h2>';
-    s += '<table class="title-table">';
-    s += '<tr>';
-    s += '<td class="avatar-box"><img class="avatar-icon" src="' + r_avatar + '"/></td>';
-    s += '<td class="title-box" valign="top">';
-    s += '<div class="title-date">' + r_date + '</div>';
-    s += '<div class="title-name" id="' + r_title_id + '">' + r_title + '</div>';
-    s += '<div class="title-user">' + r_author + '</div>';
-    s += '</td>';
-    s += '<td class="comments-box">';  
-    
-    s += '<a href="#" data-role="button" data-shadow="false" class="btn-comments"';
-    s += ' id="' + r_button_id + '">' + record.reply_count + '</a>';
-    
-    s += '</td>';
-    s += '<td class="space-box"></td>';
-    s += '</tr>';
-    s += '</table>';
-    s += '</h2>';
-    s += '<div id="' + r_content_id + '" class="content-box">' + r_content + '</div>';
-    s += '</li>';
+    var t = $.Mustache.render('feed-template', feed_data);
 
-    $(id).append(s).enhanceWithin();
+    $(id).append(t).enhanceWithin();
     
-	$('#' + r_button_id).click(function(e) {
-        onComments(r_button_id);
+	$('#' + feed_data.button_id).click(function(e) {
+        onComments(feed_data.button_id);
         e.preventDefault();
         e.stopPropagation();   
         e.stopImmediatePropagation();

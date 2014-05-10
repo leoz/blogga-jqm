@@ -139,6 +139,7 @@ function isInTransition() {
 // Panel
 
 function onClose() {
+    console.log('onClose');
     window.lj_conf.reset();
     $('[data-role="page"]').remove();
     $('[data-role="header"] h1').text( ' - ' );

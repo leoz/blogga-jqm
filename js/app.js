@@ -2,6 +2,10 @@
 // Application
 
 $(function() {
+    // BEGIN
+    console.log('Ready - BEGIN');
+
+    // Set toolbars and panels
     $('[data-role="navbar"]').navbar();
     $('[data-role="header"], [data-role="footer"]').toolbar();
     $('[data-role="panel"]').panel();
@@ -12,7 +16,16 @@ $(function() {
 
 	// Set button actions
 	setActions();
-	onClose();
+
+    // Load templates
+    $.Mustache.load('templates/feed.html').done(function () {
+        console.log('Mustache.load is done');
+        // Create first page
+	    onClose();
+    });
+
+    // END
+    console.log('Ready - END');
 });
 
 $(document).on('pagecontainercreate', function() {

@@ -1,0 +1,31 @@
+<script id="feed-template" type="text/html">
+    <li class="content-item" data-role="collapsible" data-collapsed="{{collapsed}}"
+        data-inset="false" data-iconpos="right" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+        <h2>
+            <table class="title-table">
+            <tr>
+                <td class="avatar-box"><img class="avatar-icon" src="{{avatar}}"/></td>
+                <td class="title-box" valign="top">
+                    <div class="title-date">{{date}}</div>
+                    <div class="title-name" id="{{title_id}}">{{title}}</div>
+                    <div class="title-user">{{author}}</div>
+                </td>
+                <td class="comments-box">
+                    <a href="#" data-role="button" data-shadow="false" class="btn-comments" id="{{button_id}}">{{count}}</a>
+                </td>
+                <td class="space-box"></td>
+            </tr>
+            </table>
+        </h2>
+        <div id="{{content_id}}" class="content-box">{{content}}</div>
+    </li>
+</script>
+
+<script id="page-template" type="text/html">
+    <div data-role="page" id="{{page_id}}" data-title="{{page_title}}" data-page-number="{{page_number}}">
+        <div role="main" class="ui-content main-content">
+            <ul data-role="listview" data-list-expanded="{{expanded}}" class="livejournal"></ul>
+        </div>
+    </div>
+</script>
+
