@@ -1,5 +1,5 @@
 
-<script id="page-template" type="text/html">
+<script id="feed-page-template" type="text/html">
     <div data-role="page" id="{{page_id}}" data-title="{{page_title}}" data-page-number="{{page_number}}">
         <div role="main" class="ui-content main-content">
             <ul data-role="listview" data-list-expanded="{{expanded}}" class="livejournal"></ul>
@@ -58,6 +58,14 @@
     <div class="ui-btn-right">
         <a href="#" id="btn_feed" data-role="button" data-icon="carat-l" data-iconpos="notext">Back</a>
         <a href="#" data-role="button" data-icon="grid" data-iconpos="notext">Expand</a>
+    </div>
+</script>
+
+<script id="post-page-template" type="text/html">
+    <div data-role="page" id="post_page">
+        <div role="main" class="ui-content main-content">
+            <div class="ui-body ui-body-a ui-corner-all content-box">{{content}}</div>
+        </div>
     </div>
 </script>
 

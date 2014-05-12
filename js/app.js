@@ -36,8 +36,10 @@ $(document).on('pagecontainercreate', function() {
 
 $(document).on('pagecontainerbeforeshow', function(e, ui) {
 	// Set title
-    var title = activePage().data('title');
-    $('[data-role="header"] h1').text( title );
+    if (activePage().attr('id') != 'post_page') {
+        var title = activePage().data('title');
+        $('[data-role="header"] h1').text( title );
+    }
 });
 
 $(document).on('pagechange', function(e) {

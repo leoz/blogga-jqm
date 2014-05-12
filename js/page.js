@@ -146,7 +146,7 @@ function buildPage() {
         expanded: window.lj_conf.expanded
     };
 
-    var t = $.Mustache.render('page-template', page_data);
+    var t = $.Mustache.render('feed-page-template', page_data);
 
 	return t;
 }
