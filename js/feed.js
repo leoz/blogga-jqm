@@ -17,7 +17,8 @@ function addRecord(record, user, id) {
         button_id : 'btn_' + record.itemid,
         count     : record.reply_count,
         content_id: r_content_id,
-        content   : formatContent(record, r_content_id, id)
+        content   : formatContent(record, r_content_id, id),
+        page_title: $('#header_main h1').text()
     };
 
     var t = $.Mustache.render('feed-template', feed_data);
@@ -25,7 +26,7 @@ function addRecord(record, user, id) {
     $(id).append(t).enhanceWithin();
     
 	$('#' + feed_data.button_id).click(function(e) {
-        onComments(feed_data.button_id);
+        onComments(feed_data);
         e.preventDefault();
         e.stopPropagation();   
         e.stopImmediatePropagation();
@@ -34,10 +35,27 @@ function addRecord(record, user, id) {
     $(id).listview('refresh');
 }
 
-function onComments(id) {
-    alert('onComments: ' + id);
+function onComments(data) {
+
+    data.title = $('#' + data.title_id).text();
+
+    var t = $.Mustache.render('post-header-template', data);
+
+    $('#header_main').html(t);
+    $('#header_main').toolbar('refresh');
+
+	$('#btn_feed').click(function() { onFeed(data); });
 }
-    
+
+function onFeed(data) {
+    var t = $.Mustache.render('feed-header-template', data);
+
+    $('#header_main').html(t);
+    $('#header_main').toolbar('refresh');
+
+	$('#btn_expand').click(function() { onExpand(); });
+}
+
 function doneReading(count, date) {
     window.lj_conf.count = count;
     window.lj_conf.date = date;

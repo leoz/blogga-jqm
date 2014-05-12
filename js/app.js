@@ -21,6 +21,7 @@ $(function() {
     $.Mustache.load('templates/feed.html').done(function () {
         console.log('Mustache.load is done');
         // Create first page
+        onFeed();
 	    onClose();
     });
 

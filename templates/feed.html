@@ -1,3 +1,12 @@
+
+<script id="page-template" type="text/html">
+    <div data-role="page" id="{{page_id}}" data-title="{{page_title}}" data-page-number="{{page_number}}">
+        <div role="main" class="ui-content main-content">
+            <ul data-role="listview" data-list-expanded="{{expanded}}" class="livejournal"></ul>
+        </div>
+    </div>
+</script>
+
 <script id="feed-template" type="text/html">
     <li class="content-item" data-role="collapsible" data-collapsed="{{collapsed}}"
         data-inset="false" data-iconpos="right" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
@@ -21,11 +30,35 @@
     </li>
 </script>
 
-<script id="page-template" type="text/html">
-    <div data-role="page" id="{{page_id}}" data-title="{{page_title}}" data-page-number="{{page_number}}">
-        <div role="main" class="ui-content main-content">
-            <ul data-role="listview" data-list-expanded="{{expanded}}" class="livejournal"></ul>
-        </div>
+<script id="feed-header-template" type="text/html">
+    <h1>{{page_title}}</h1>
+    <div class="ui-btn-left">
+        <a href="#panel_main" data-role="button" data-icon="bars" data-iconpos="notext">Panel</a>
+    </div>
+    <div class="ui-btn-right">
+        <a href="#" id="btn_expand" data-role="button" data-icon="grid" data-iconpos="notext">Expand</a>
     </div>
 </script>
+
+<script id="post-header-template" type="text/html">
+    <div class="header-left ui-btn-left">
+        <span class="hl-left">
+            <img src="{{avatar}}"/>
+        </span>
+        <span class="hl-right">
+            <div class="header-date">{{date}}</div>
+            <div class="header-name">{{author}}</div>
+        </span>
+    </div>
+    <div class="header-right ui-li-count">{{count}}</div>
+    <h1>{{title}}</h1>
+    <div class="ui-btn-left">
+        <a href="#panel_main" data-role="button" data-icon="bars" data-iconpos="notext">Panel</a>
+    </div>
+    <div class="ui-btn-right">
+        <a href="#" id="btn_feed" data-role="button" data-icon="carat-l" data-iconpos="notext">Back</a>
+        <a href="#" data-role="button" data-icon="grid" data-iconpos="notext">Expand</a>
+    </div>
+</script>
+
 
