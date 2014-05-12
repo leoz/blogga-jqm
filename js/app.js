@@ -18,7 +18,7 @@ $(function() {
 	setActions();
 
     // Load templates
-    $.Mustache.load('templates/feed.html').done(function () {
+    $.Mustache.load('templates.html').done(function () {
         console.log('Mustache.load is done');
         // Create first page
         onFeed();
