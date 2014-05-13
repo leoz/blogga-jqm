@@ -33,7 +33,7 @@
 }
 
 .title-box {
-	width:100%;
+	width: 100%;
 //	background-color: pink;
 }
 
@@ -72,8 +72,8 @@
 }
 
 .content-box {
-//	background-color: yellow;
     white-space: normal;
+//	background-color: yellow;
 }
 
 .content-box img {

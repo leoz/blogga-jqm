@@ -46,6 +46,30 @@
 		    }
 	    });
     }
+
+    $.livejournal.getcomments = function(user, itemid, anum, cb_event, id, cb_done) {
+        var ditemid = itemid * 256 + anum;
+        var lj_method = 'LJ.XMLRPC.getcomments';
+	    $.xmlrpc({
+	        url: LJ_URL,
+	        methodName: lj_method,
+	        params: [ {
+			    'ver' : '1',
+                'journal' : user,
+                'ditemid' : ditemid
+		    } ],
+	        success: function(response, status, jqXHR) {
+	            success(lj_method, response, status);
+			    $.each( response[0].comments, function( i, item ) {
+				    cb_event(item, id);
+			    });	            
+                cb_done();
+		    },
+	        error: function(jqXHR, status, error) {
+                error(lj_method, status, error);
+		    }
+	    });
+    }    
     
     // Global Private Variables
     var LJ_URL = 'http://www.livejournal.com/interface/xmlrpc';

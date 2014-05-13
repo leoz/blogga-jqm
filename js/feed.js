@@ -18,7 +18,9 @@ function addRecord(record, user, id) {
         count     : record.reply_count,
         content_id: r_content_id,
         content   : formatContent(record, r_content_id, id),
-        page_title: $('#header_main h1').text()
+        page_title: $('#header_main h1').text(),
+        itemid    : record.itemid,
+        anum      : record.anum
     };
 
     var t = $.Mustache.render('feed-template', feed_data);
@@ -33,40 +35,6 @@ function addRecord(record, user, id) {
 	});
     
     $(id).listview('refresh');
-}
-
-function onComments(data) {
-
-    data.title = $('#' + data.title_id).text();
-    data.content = $('#' + data.content_id).html();
-
-    var t = $.Mustache.render('post-header-template', data);
-
-    $('#header_main').html(t);
-    $('#header_main').toolbar('refresh');
-
-	$('#btn_feed').click(function() { onFeed(data); });
-	
-	$('#footer_main').toolbar('hide');
-	
-	showCommentsPage(data);
-}
-
-function showCommentsPage(data) {
-    var t = $.Mustache.render('post-page-template', data);
-
-    createFeedPage(t);
-}
-
-function createFeedPage(data) {
-    if (!canDoPrev()) {
-        activePage().before(data);
-    } else {
-        getFirst().before(data);
-    }
-    $.mobile.pageContainer.pagecontainer('change', getFirst().last(), {
-	    transition: 'slide'
-    });
 }
 
 function onFeed(data) {
@@ -155,5 +123,4 @@ function array_buffer_to_string(buf, callback) {
     }
     f.readAsText(bb);
 }
-
 

@@ -24,6 +24,7 @@
 }
 
 .header-date {
+	font-size: xx-small;
 	font-weight: bold;
 	color: rgba(0, 39, 59, 0.34902);
 //	background-color: navy;
@@ -31,6 +32,7 @@
 
 .header-name {
 	color: rgb(119, 119, 119);
+    text-align: left;
 //	background-color: orange;
 }
 
@@ -38,10 +40,11 @@
     margin-right: 72px !important;
 }
 
-.main-header {
-	color: #666;
-	font-family: 'Roboto', cursive;
-	font-weight: 300;
-	text-transform: uppercase;
+.comments-area {
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    padding-top: 0.9em;
+    padding-bottom: 0.9em;
+//	background-color: yellow;
 }
 
