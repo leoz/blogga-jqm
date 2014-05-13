@@ -21,7 +21,7 @@ function onComments(data) {
 function showCommentsPage(data) {
     var t = $.Mustache.render('post-page-template', data);
 
-    createFeedPage(t);
+    createCommentsPage(t);
 
     var id = '#' + 'post_page' + ' .main-content .comments-list';
 
@@ -34,20 +34,18 @@ function doneLC() {
     $.mobile.loading('hide');
 }
 
-function createFeedPage(data) {
-    if (!canDoPrev()) {
-        activePage().before(data);
-    } else {
-        getFirst().before(data);
-    }
-    $.mobile.pageContainer.pagecontainer('change', getFirst().last(), {
+function createCommentsPage(data) {
+    var page = activePage();
+    page.before(data);
+
+    $.mobile.pageContainer.pagecontainer('change', page.prev('[data-role=page]'), {
 	    transition: 'slide'
     });
 }
 
 function addComment(comment, id) {
 
-    console.log(comment);
+//    console.log(comment);
 
     var r_body_id = 'body_' + comment.dtalkid;
     var r_children_id = 'children_' + comment.dtalkid;
@@ -73,7 +71,7 @@ function addComment(comment, id) {
 
 function addChildren(comment, id) {
     if (comment.hasOwnProperty('children')) {
-        console.log('addChildren!!!');
+//        console.log('addChildren!!!');
 
         var r_list_id = 'list_' + comment.dtalkid;
 

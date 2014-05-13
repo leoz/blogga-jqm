@@ -48,21 +48,19 @@ function onFeed(data) {
 	$('#footer_main').toolbar('show');
 	
 	if(data != undefined) {
-        removeFeedPage();
+        removeCommentsPage();
 	}
 }
 
-function removeFeedPage() {
-    var page = getFirst();
-    if(page.length === 0) {
-        page = activePage();
-        var active_page = page.next('[data-role=page]');
-        $.mobile.pageContainer.pagecontainer('change', active_page, {
-            transition: 'slide',
-            reverse: true
-        });
-
-    }
+function removeCommentsPage() {
+    var page = activePage();
+//    console.log('removeCommentsPage - old page: ' + page.attr('id'));
+    var active_page = page.next('[data-role=page]');
+//    console.log('removeCommentsPage - new page: ' + active_page.attr('id'));
+    $.mobile.pageContainer.pagecontainer('change', active_page, {
+        transition: 'slide',
+        reverse: true
+    });
     page.remove();
 }
 
