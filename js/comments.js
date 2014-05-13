@@ -64,6 +64,8 @@ function addComment(comment, id) {
 
     $(id).append(t).enhanceWithin();
 
+    $('.content-item .ui-collapsible-content').autumn();
+
     $(id).listview('refresh');
 
     addChildren(comment, '#' + r_children_id);

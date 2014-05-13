@@ -17,6 +17,17 @@ $(function() {
 	// Set button actions
 	setActions();
 
+
+    // Init colors
+    $.fn.autumn.init({
+        colorProfile:['hsl', 40, 80, 85, 95], //a name would work fine as well (e.g. 'light')
+        hueScale:1,
+        hueCenter:0,
+        generator:'halton',
+        primeWalkHueDistance: 223
+    });
+
+
     // Load templates
     $.Mustache.load('templates.html').done(function () {
         console.log('Mustache.load is done');

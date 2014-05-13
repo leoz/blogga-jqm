@@ -45,6 +45,10 @@
     margin-bottom: 0.4em;
     padding-top: 0.9em;
     padding-bottom: 0.9em;
-//	background-color: yellow;
+}
+
+.post-content-box {
+    padding-bottom: 0.2em;
+// 	background-color: red;
 }
 
