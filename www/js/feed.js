@@ -70,8 +70,7 @@ function doneReading(count, date) {
 }
 
 function formatDate(s) {
-    var d = new Date(s);
-    return $.format.date(d, "dd MMM yyyy, hh:mm p");
+    return $.format.date(s, 'dd MMM yyyy, hh:mm p');
 }
 
 function formatAuthor(record, user) {

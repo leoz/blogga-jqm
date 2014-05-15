@@ -89,9 +89,9 @@ function addChildren(comment, id) {
     }
 }
 
-function formatUnixDate(s) {
-    var d = new Date(s*1000);
-    return $.format.date(d, "dd MMM yyyy, hh:mm p");
+function formatUnixDate(sec) {
+    var d = new Date(sec*1000);
+    return $.format.date(d, 'dd MMM yyyy, hh:mm p');
 }
 
 function formatBody(comment, id, parent_id) {
