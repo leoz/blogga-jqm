@@ -4,7 +4,6 @@
 function onComments(data) {
 
     data.title = $('#' + data.title_id).text();
-    data.content = $('#' + data.content_id).html();
 
     var t = $.Mustache.render('post-header-template', data);
 
@@ -22,6 +21,9 @@ function showCommentsPage(data) {
     var t = $.Mustache.render('post-page-template', data);
 
     createCommentsPage(t);
+
+    var content = $('#' + data.content_id).html();
+    $('#inner_' + data.content_id).html(content);
 
     var id = '#' + 'post_page' + ' .main-content .comments-list';
 
