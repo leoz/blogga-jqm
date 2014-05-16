@@ -2,6 +2,7 @@ var DateFormat = {};
 
 (function($) {
   var daysInWeek          = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var shortDaysInWeek     = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   var shortMonthsInYear   = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var longMonthsInYear    = ['January', 'February', 'March', 'April', 'May', 'June',
@@ -16,6 +17,12 @@ var DateFormat = {};
       // 0 to Sunday
       // 1 to Monday
       return daysInWeek[parseInt(value, 10)] || value;
+    }
+
+    function numberToShortDay(value) {
+      // 0 to Sun
+      // 1 to Mon
+      return shortDaysInWeek[parseInt(value, 10)] || value;
     }
 
     function numberToShortMonth(value) {
@@ -126,6 +133,16 @@ var DateFormat = {};
           parsedDate.time       = parseTime(values[3].split('.')[0]);
         } else {
           values = value.split(' ');
+          if(values.length === 6 && isNaN(values[5])) {
+            // values[5] == year
+            /*
+             * This change is necessary to make `Mon Apr 28 2014 05:30:00 GMT-0300` work
+             * like `case 7`
+             * otherwise it will be considered like `Wed Jan 13 10:43:41 CET 2010
+             * Fixes: https://github.com/phstc/jquery-dateFormat/issues/64
+             */
+            values[values.length] = '()';
+          }
           switch (values.length) {
             case 6:
               /* Wed Jan 13 10:43:41 CET 2010 */
@@ -355,6 +372,10 @@ var DateFormat = {};
                 break;
               case 'p':
                 retValue += time.hour >= 12 ? 'p.m.' : 'a.m.';
+                pattern = '';
+                break;
+              case 'E':
+                retValue += numberToShortDay(dayOfWeek);
                 pattern = '';
                 break;
               case "'":

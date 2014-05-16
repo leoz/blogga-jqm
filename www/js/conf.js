@@ -10,7 +10,9 @@ window.lj_conf = {
     journal : null,
     data : {},
     setCurrentDate: function() {
-        this.date = $.format.date(new Date(), this.format);
+        var d = new Date();
+        var t = $.format.date(d, this.format);
+        this.date = t;
     },
     reset: function () {
         this.setCurrentDate();
