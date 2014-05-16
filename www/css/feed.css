@@ -1,0 +1,98 @@
+/* Feed Page CSS */
+
+.avatar-box {
+    width: 54px;
+    height: 54px;
+    text-align: center;
+//	background-color: red;
+}
+
+.avatar-icon {
+    vertical-align: middle;
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.title-box {
+	width: 100%;
+//	background-color: pink;
+}
+
+.comments-box {
+    width: 64px;
+//	background-color: yellow;
+}
+
+.btn-comments {
+    text-align: center !important;
+    background-color: rgb(180, 212, 236) !important;
+    color: rgb(119, 119, 119) !important;
+}
+
+.space-box {
+    width: 46px;
+//	background-color: green;
+}
+
+.title-date {
+	margin-top: 4px;
+	font-weight: bold;
+	font-size: x-small;
+	color: rgba(0, 39, 59, 0.34902);
+}
+
+.title-name {
+	font-weight: bold;
+	color: rgb(42, 90, 138);
+    white-space: normal;
+}
+
+.title-user {
+	font-size: x-small;
+	color: rgb(119, 119, 119);
+}
+
+.content-box {
+    white-space: normal;
+//	background-color: yellow;
+}
+
+.content-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.title-table {
+    table-layout:fixed;
+	width:100%;
+    border-collapse: collapse;
+}
+
+.title-table td {
+    padding: 0;
+}
+
+.content-item .ui-collapsible-content {  
+//	background-color: green;
+    padding-bottom: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 3px;
+}
+
+.ui-li-static.ui-collapsible > .ui-collapsible-heading {
+    margin: 0;
+}
+.ui-li-static.ui-collapsible {
+    padding: 0;
+}
+.ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
+    padding: 0;
+    border-top-width: 0;
+}
+.ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
+.ui-li-static.ui-collapsible > .ui-collapsible-content {
+    border-bottom-width: 0;
+}
+
+

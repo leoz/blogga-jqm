@@ -62,7 +62,7 @@ function addComment(comment, id) {
 
     $(id).append(t).enhanceWithin();
 
-    $('.content-item .ui-collapsible-content').autumn();
+    $('.post-item .ui-collapsible-content').autumn();
 
     $(id).listview('refresh');
 
