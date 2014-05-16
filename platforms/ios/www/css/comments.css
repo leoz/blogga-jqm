@@ -1,0 +1,54 @@
+/* Comments Page CSS */
+
+.header-left {
+    margin-left: 36px !important;
+    text-align: center;
+//	background-color: yellow;
+}
+
+.header-left img {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.hl-left {
+    margin-left: 6px;
+    float: left;
+//	background-color: pink;
+}
+
+.hl-right {
+    margin-left: 12px;
+    float: right;
+//	background-color: green;
+}
+
+.header-date {
+	font-size: xx-small;
+	font-weight: bold;
+	color: rgba(0, 39, 59, 0.34902);
+//	background-color: navy;
+}
+
+.header-name {
+	color: rgb(119, 119, 119);
+    text-align: left;
+//	background-color: orange;
+}
+
+.header-right {
+    margin-right: 72px !important;
+}
+
+.comments-area {
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    padding-top: 0.9em;
+    padding-bottom: 0.9em;
+}
+
+.post-content-box {
+    padding-bottom: 0.2em;
+// 	background-color: red;
+}
+

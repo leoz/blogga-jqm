@@ -1,0 +1,108 @@
+
+<script id="feed-header-template" type="text/html">
+    <h1>{{page_title}}</h1>
+    <div class="ui-btn-left">
+        <a href="#panel_main" data-role="button" data-icon="bars" data-iconpos="notext">Panel</a>
+    </div>
+    <div class="ui-btn-right">
+        <a href="#" id="btn_expand" data-role="button" data-icon="grid" data-iconpos="notext">Expand</a>
+    </div>
+</script>
+
+<script id="feed-page-template" type="text/html">
+    <div data-role="page" id="{{page_id}}" data-title="{{page_title}}" data-page-number="{{page_number}}">
+        <div role="main" class="ui-content main-content">
+            <ul data-role="listview" data-list-expanded="{{expanded}}" class="livejournal"></ul>
+        </div>
+    </div>
+</script>
+
+<script id="feed-template" type="text/html">
+    <li class="content-item" data-role="collapsible" data-collapsed="{{collapsed}}"
+        data-inset="false" data-iconpos="right" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+        <h2>
+            <table class="title-table">
+            <tr>
+                <td class="avatar-box"><img class="avatar-icon" src="{{avatar}}"/></td>
+                <td class="title-box" valign="top">
+                    <div class="title-date">{{date}}</div>
+                    <div class="title-name" id="{{title_id}}">{{title}}</div>
+                    <div class="title-user">{{author}}</div>
+                </td>
+                <td class="comments-box">
+                    <a href="#" data-role="button" data-shadow="false" class="btn-comments" id="{{button_id}}">{{count}}</a>
+                </td>
+                <td class="space-box"></td>
+            </tr>
+            </table>
+        </h2>
+        <div id="{{content_id}}" class="content-box">{{content}}</div>
+    </li>
+</script>
+
+<script id="post-header-template" type="text/html">
+    <div class="header-left ui-btn-left">
+        <span class="hl-left">
+            <img src="{{avatar}}"/>
+        </span>
+        <span class="hl-right">
+            <div class="header-date">{{date}}</div>
+            <div class="header-name">{{author}}</div>
+        </span>
+    </div>
+    <div class="header-right ui-li-count">{{count}}</div>
+    <h1>{{title}}</h1>
+    <div class="ui-btn-left">
+        <a href="#panel_main" data-role="button" data-icon="bars" data-iconpos="notext">Panel</a>
+    </div>
+    <div class="ui-btn-right">
+        <a href="#" id="btn_feed" data-role="button" data-icon="carat-l" data-iconpos="notext">Back</a>
+        <a href="#" data-role="button" data-icon="grid" data-iconpos="notext">Expand</a>
+    </div>
+</script>
+
+<script id="post-page-template" type="text/html">
+    <div data-role="page" id="post_page">
+        <div role="main" class="ui-content main-content">
+            <div id="inner_{{content_id}}" class="ui-body ui-body-a ui-corner-all content-box">{{content}}</div>
+
+            <div class="ui-body ui-body-a ui-corner-all comments-area">            
+                <ul data-role="listview" class="comments-list">
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</script>
+
+<script id="post-template" type="text/html">
+    <li class="content-item post-item" data-role="collapsible" data-collapsed="false"
+        data-inset="false" data-iconpos="right" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+
+        <h2>
+            <table class="title-table">
+            <tr>
+                <td class="avatar-box"><img class="avatar-icon" src="img/avatar.png"/></td>
+                <td class="title-box" valign="top">
+                    <div class="title-date">{{date}}</div>
+                    <div class="title-user">{{poster}}</div>
+                </td>
+            </tr>
+            </table>
+        </h2>
+
+        <div class="post-content-box">        
+            <div id="{{body_id}}" class="content-box">{{body}}</div>
+            <div id="{{children_id}}"></div>
+        <div>
+    </li>
+</script>
+
+<script id="comments-area-template" type="text/html">
+    <div class="ui-body ui-body-a ui-corner-all comments-area">
+        <ul data-role="listview" id="{{list_id}}">
+        </ul>
+    </div>
+</script>
+
+
