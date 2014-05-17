@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+    width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Blogga</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/lib/roboto.css" />
+    <link rel="stylesheet" href="css/lib/opensans.css" />
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.2.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/feed.css" />
+    <link rel="stylesheet" href="css/comments.css" />    
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="cordova.js"></script>
+    <script src="js/lib/jquery-1.11.1.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.2.js"></script>
+    <script src="js/lib/husl.js"></script>
+    <script src="js/lib/autumn.js"></script>
+    <script src="js/lib/mustache.js"></script>
+    <script src="js/lib/jquery.mustache.js"></script>
+    <script src="js/lib/jquery.xmlrpc.js"></script>
+    <script src="js/lib/jquery.livejournal.js"></script>
+    <script src="js/lib/jquery-dateFormat.js"></script>
+    <script src="js/conf.js"></script>
+    <script src="js/feed.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/page.js"></script>
+    <script src="js/comments.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/init.js"></script>
+</head>
+<body>
+
+<div data-role="panel" id="panel_main" data-position="left" data-position-fixed="true" data-display="overlay" data-theme="a">
+    <a href="#" id="btn_close" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Close All</a>
+    <label for="journal-input">Journal:</label>
+    <div data-role="controlgroup" data-type="horizontal">
+        <input type="text" name="journal-input" id="journal-input" data-wrapper-class="controlgroup-textinput ui-btn-inline" data-mini="true">
+        <a id="btn_change" class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline">Journal</a>
+    </div>
+</div>
+
+<div data-role="header" id="header_main" class="main-header" data-position="fixed" data-theme="a">
+</div>
+    
+<div data-role="page" id="main_page"></div>
+
+<div data-role="footer" id="footer_main" class="main-footer" data-position="fixed" data-theme="a">
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#" id="btn_last" data-icon="arrow-l">First</a></li>
+            <li><a href="#" id="btn_next" data-icon="carat-l">Previous</a></li>
+            <li><a href="#" id="btn_prev" data-icon="carat-r">Next</a></li>
+            <li><a href="#" id="btn_first" data-icon="arrow-r">Last</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
+

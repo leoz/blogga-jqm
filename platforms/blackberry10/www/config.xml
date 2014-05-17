@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.leoz.blogga" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:rim="http://www.blackberry.com/ns/widgets">
+    <name>Blogga</name>
+    <description>
+        LiveJournal client.
+    </description>
+    <author email="leoz.android@gmail.com" href="http://leoz.net">
+        Leonid Zolotarev
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access origin="file:///" subdomains="true" />
+    <access origin="http://livejournal.com" subdomains="true" />
+</widget>

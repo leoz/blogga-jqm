@@ -9,5 +9,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+	<access origin="file:///" subdomains="true" />
+	<access origin="http://livejournal.com" subdomains="true" />
 </widget>
 

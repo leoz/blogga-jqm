@@ -1,0 +1,22 @@
+/* Application CSS */
+
+.main-header {
+	color: #666;
+	font-family: 'Roboto', cursive;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+.main-footer a {
+	font-size: .8em;
+	color: #999;
+	font-family: 'Roboto', cursive;
+	font-weight: 300;
+}
+
+.main-content {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+
