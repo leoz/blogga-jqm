@@ -5,28 +5,14 @@ function setActions() {
     // Header
 	$('#btn_expand').click(function() { onExpand(); });
     // Panel
-	$('#btn_close').click(function() { onClose(); });
 	$('#btn_change').click(function() { onChange(); });
     // Navigation
-	$('#btn_last').click(function() { onLast(); });
+	$('#btn_home').click(function() { onHome(); });
 	$('#btn_next').click(function() { onNext(); });
 	$('#btn_prev').click(function() { onPrev(); });
-	$('#btn_first').click(function() { onFirst(); });
 }
 
 function setButtons() {
-    if (canDoNext()) {
-		$('#btn_last').prop('disabled', true).removeClass('ui-disabled');
-    }
-	else {
-		$('#btn_last').prop('disabled', true).addClass('ui-disabled');
-	}
-    if (canDoPrev()) {
-		$('#btn_first').prop('disabled', true).removeClass('ui-disabled');
-    }
-	else {
-		$('#btn_first').prop('disabled', true).addClass('ui-disabled');
-	}
     if (canAddNext()) {
 		$('#btn_prev').prop('disabled', true).removeClass('ui-disabled');
     }
@@ -100,29 +86,6 @@ $(document).on('swipeleft swiperight', '[data-role=page]', function (e) {
     }
 });
 
-function onFirst() {
-    if (canDoPrev()) {
-        var page = getFirst();
-	    $.mobile.pageContainer.pagecontainer('change', page, {
-		    transition: 'slide'
-	    });
-        window.pageController.current = page.data('page-number');
-	}
-    console.log('Cur: ' + window.pageController.current);
-}
-
-function onLast() {
-    if (canDoNext()) {
-        var page = getLast();
-        $.mobile.pageContainer.pagecontainer('change', page, {
-		    transition: 'slide',
-		    reverse: true
-	    });
-        window.pageController.current = page.data('page-number');
-	}
-    console.log('Cur: ' + window.pageController.current);
-}
-
 function canAddNext() {
     return (!isInTransition() && !window.pageController.isLastPage());
 }
@@ -145,8 +108,8 @@ function isInTransition() {
 
 // Panel
 
-function onClose() {
-    console.log('onClose');
+function onHome() {
+    console.log('onHome');
     window.lj_conf.reset();
     $('[data-role="page"]').remove();
     $('[data-role="header"] h1').text( ' - ' );
@@ -158,7 +121,7 @@ function onChange() {
     var journal = $('#journal-input').val();
     window.lj_conf.setJournal(journal);
     console.log('onChange: ' + window.lj_conf.journal);
-    onClose();
+    onHome();
 }
 
 // Header

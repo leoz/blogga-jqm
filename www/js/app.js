@@ -31,7 +31,7 @@ $(function() {
         console.log('Mustache.load is done');
         // Create first page
         onFeed();
-	    onClose();
+	    onHome();
     });
 
     // END
