@@ -19,7 +19,7 @@
 
 <script id="feed-template" type="text/html">
     <li class="content-item" data-role="collapsible" data-collapsed="{{collapsed}}"
-        data-inset="false" data-iconpos="right" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+        data-inset="false" data-collapsed-icon="false">
         <h2>
             <table class="title-table">
             <tr>
@@ -30,9 +30,8 @@
                     <div class="title-user">{{author}}</div>
                 </td>
                 <td class="comments-box">
-                    <a href="#" data-role="button" data-shadow="false" class="btn-comments" id="{{button_id}}">{{count}}</a>
+                    <a href="#" data-role="button" data-shadow="false" data-corners="false" class="btn-comments" id="{{button_id}}">{{count}}</a>
                 </td>
-                <td class="space-box"></td>
             </tr>
             </table>
         </h2>

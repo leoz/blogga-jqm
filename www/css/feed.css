@@ -19,19 +19,22 @@
 }
 
 .comments-box {
-    width: 64px;
+    width: 60px;
 //	background-color: yellow;
 }
 
 .btn-comments {
+    border-top:0 !important;
+    border-bottom:0 !important;
+    border:0 !important;
+    padding-bottom: 1em !important;
+    padding-top: 1em !important;
     text-align: center !important;
-    background-color: rgb(180, 212, 236) !important;
-    color: rgb(119, 119, 119) !important;
-}
-
-.space-box {
-    width: 46px;
-//	background-color: green;
+    background-color: transparent !important;
+    color: black !important;
+    background: url('../img/bubble.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .title-date {
