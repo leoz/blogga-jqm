@@ -11,8 +11,6 @@ window.lj_conf = {
     data : {},
     setCurrentDate: function() {
         var d = new Date();
-        // This is a hack to get all the latest posts
-        d.setTime(d.getTime() + 43200000);
         var t = $.format.date(d, this.format);
         this.date = t;
     },
