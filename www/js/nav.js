@@ -85,11 +85,18 @@ function onNext() {
 }
 
 $(document).on('swipeleft swiperight', '[data-role=page]', function (e) {
-    if (e.type == 'swipeleft') {
-        onPrev();
-    }
-    if (e.type == 'swiperight') {
-        onNext();
+    var page_id = $(this).attr('id');
+    if (page_id != 'post_page' && page_id != 'main_page') {
+        if (e.type == 'swipeleft') {
+		    if (!$('#btn_prev').prop('disabled', true).hasClass('ui-disabled')) {
+                onPrev();
+		    }
+        }
+        if (e.type == 'swiperight') {
+		    if (!$('#btn_next').prop('disabled', true).hasClass('ui-disabled')) {
+                onNext();
+		    }
+        }
     }
 });
 
