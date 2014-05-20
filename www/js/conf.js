@@ -14,10 +14,14 @@ window.lj_conf = {
         var t = $.format.date(d, this.format);
         this.date = t;
     },
+    setCurrentCount: function() {
+		var num = parseInt($( window ).height() / 54) - 2;
+        this.number = num;
+        this.count = num;
+    },
     reset: function () {
         this.setCurrentDate();
-        this.number = 10;
-        this.count = 10;
+        this.setCurrentCount();
     },
     setJournal: function(journal) {
         this.reset();
