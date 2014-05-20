@@ -24,13 +24,16 @@
             <table class="title-table">
             <tr>
                 <td class="avatar-box"><img class="avatar-icon" src="{{avatar}}"/></td>
-                <td class="title-box" valign="top">
-                    <div class="title-date">{{date}}</div>
+                <td class="title-box">
                     <div class="title-name" id="{{title_id}}">{{title}}</div>
                     <div class="title-user">{{author}}</div>
                 </td>
+                <td class="date-box">
+                    <div>{{date_day}}</div>
+                    <div>{{date_time}}</div>
+                </td>
                 <td class="comments-box">
-                    <a href="#" data-role="button" data-shadow="false" data-corners="false" class="btn-comments" id="{{button_id}}">{{count}}</a>
+                    <div data-role="button" class="ui-li-count" id="{{button_id}}">{{count}}</div>
                 </td>
             </tr>
             </table>

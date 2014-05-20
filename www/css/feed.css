@@ -1,8 +1,8 @@
 /* Feed Page CSS */
 
 .avatar-box {
-    width: 54px;
-    height: 54px;
+    width: 80px;
+    height: 80px;
     text-align: center;
 //	background-color: red;
 }
@@ -11,6 +11,10 @@
     vertical-align: middle;
     max-width: 48px;
     max-height: 48px;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;    
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
 }
 
 .title-box {
@@ -18,41 +22,30 @@
 //	background-color: pink;
 }
 
+.date-box {
+    width: 100px;
+	font-weight: normal;
+    text-align: center;
+//	background-color: green;
+}
+
 .comments-box {
-    width: 60px;
+    width: 100px;
 //	background-color: yellow;
 }
 
-.btn-comments {
-    border-top:0 !important;
-    border-bottom:0 !important;
-    border:0 !important;
-    padding-bottom: 1em !important;
-    padding-top: 1em !important;
-    text-align: center !important;
-    background-color: transparent !important;
-    color: black !important;
-    background: url('../img/bubble.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.title-date {
-	margin-top: 4px;
-	font-weight: bold;
-	font-size: x-small;
-	color: rgba(0, 39, 59, 0.34902);
+.comments-box div {
+	font-size: 160%;
 }
 
 .title-name {
-	font-weight: bold;
-	color: rgb(42, 90, 138);
+	font-size: 140%;
+	font-weight: normal;
     white-space: normal;
+//	background-color: white;
 }
 
 .title-user {
-	font-size: x-small;
-	color: rgb(119, 119, 119);
 }
 
 .content-box {
@@ -76,26 +69,26 @@
 }
 
 .content-item .ui-collapsible-content {  
-//	background-color: green;
     padding-bottom: 0;
     padding-left: 6px;
     padding-right: 6px;
     padding-top: 3px;
+//	background-color: green;
 }
 
 .ui-li-static.ui-collapsible > .ui-collapsible-heading {
-    margin: 0;
+    margin: 0 !important;
 }
 .ui-li-static.ui-collapsible {
-    padding: 0;
+    padding: 0 !important;
 }
 .ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
-    padding: 0;
-    border-top-width: 0;
+    padding: 0 !important;
+    border-top-width: 0 !important;
 }
 .ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
 .ui-li-static.ui-collapsible > .ui-collapsible-content {
-    border-bottom-width: 0;
+    border-bottom-width: 0 !important;
 }
 
 

@@ -10,7 +10,8 @@ function addRecord(record, user, id) {
     var feed_data = {
         collapsed : (!window.lj_conf.expanded),
         avatar    : formatAvatar(record),
-        date      : formatDate(record.eventtime),
+        date_day  : formatDateDay(record.eventtime),
+        date_time : formatDateTime(record.eventtime),
         title_id  : r_title_id,
         title     : formatTitle(record, r_title_id, id),
         author    : formatAuthor(record, user),
@@ -69,8 +70,12 @@ function doneReading(count, date) {
     window.lj_conf.date = date;
 }
 
-function formatDate(s) {
-    return $.format.date(s, 'dd MMM yyyy, hh:mm p');
+function formatDateDay(s) {
+    return $.format.date(s, 'dd MMM yyyy');
+}
+
+function formatDateTime(s) {
+    return $.format.date(s, 'hh:mm p');
 }
 
 function formatAuthor(record, user) {
