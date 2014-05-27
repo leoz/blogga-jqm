@@ -2,17 +2,35 @@
 <script id="feed-header-template" type="text/html">
     <h1>{{page_title}}</h1>
     <div class="ui-btn-left">
-        <a href="#panel_main" data-role="button" data-icon="bars" data-iconpos="notext">Panel</a>
+        <a href="#panel_main" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-bars"></a>
     </div>
     <div class="ui-btn-right">
-        <a href="#" id="btn_expand" data-role="button" data-icon="grid" data-iconpos="notext">Expand</a>
+        <a href="#" id="btn_expand" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-grid"></a>
+    </div>
+</script>
+
+<script id="feed-footer-template" type="text/html">
+    <div data-role="navbar">
+        <ul>
+            <li class="footer-li">
+				<a href="#" id="btn_next" class="footer-button ui-btn ui-btn-icon-notext ui-icon-carat-l"></a>
+			</li>
+            <li class="footer-li">
+				<a href="#" id="btn_home" class="footer-button ui-btn ui-btn-icon-notext ui-icon-home"></a>
+			</li>
+            <li class="footer-li">
+				<a href="#" id="btn_prev" class="footer-button ui-btn ui-btn-icon-notext ui-icon-carat-r"></a>
+			</li>
+        </ul>
     </div>
 </script>
 
 <script id="feed-page-template" type="text/html">
     <div data-role="page" id="{{page_id}}" data-title="{{page_title}}" data-page-number="{{page_number}}">
-        <div role="main" class="ui-content main-content">
-            <ul data-role="listview" data-list-expanded="{{expanded}}" class="livejournal"></ul>
+        <div role="main" class="main-content ui-content">
+		    <div class="main-body ui-body ui-body-a ui-corner-all">
+            	<ul data-role="listview" data-list-expanded="{{expanded}}" class="feed-list"></ul>
+	        </div>
         </div>
     </div>
 </script>
@@ -43,36 +61,54 @@
 </script>
 
 <script id="post-header-template" type="text/html">
-    <div class="header-left ui-btn-left">
-        <span class="hl-left">
-            <img src="{{avatar}}"/>
-        </span>
-        <span class="hl-right">
-            <div class="header-date">{{date}}</div>
-            <div class="header-name">{{author}}</div>
-        </span>
-    </div>
-    <div class="header-right ui-li-count">{{count}}</div>
-    <h1>{{title}}</h1>
+    <h1>{{count_text}}</h1>
     <div class="ui-btn-left">
-        <a href="#panel_main" data-role="button" data-icon="bars" data-iconpos="notext">Panel</a>
+        <a href="#panel_main" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-bars"></a>
     </div>
     <div class="ui-btn-right">
-        <a href="#" id="btn_feed" data-role="button" data-icon="carat-l" data-iconpos="notext">Back</a>
-        <a href="#" data-role="button" data-icon="grid" data-iconpos="notext">Expand</a>
+        <a href="#" id="btn_expand" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-grid"></a>
+    </div>
+</script>
+
+<script id="post-footer-template" type="text/html">
+    <div data-role="navbar">
+        <ul>
+            <li class="footer-li">
+				<a href="#" id="btn_feed" class="footer-button ui-btn ui-btn-icon-notext ui-icon-carat-l"></a>
+			</li>
+        </ul>
     </div>
 </script>
 
 <script id="post-page-template" type="text/html">
     <div data-role="page" id="post_page">
-        <div role="main" class="ui-content main-content">
-            <div id="inner_{{content_id}}" class="ui-body ui-body-a ui-corner-all content-box">{{content}}</div>
+        <div role="main" class="main-content ui-content">
+            <div class="main-body">
+                <div class="comments-area ui-body ui-body-a ui-corner-all">            
+                    <h2>
+                        <table class="title-table">
+                        <tr>
+                            <td class="avatar-box"><img class="avatar-icon" src="{{avatar}}"/></td>
+                            <td class="title-box">
+                                <div class="title-name" id="{{title_id}}">{{title}}</div>
+                                <div class="title-user">{{author}}</div>
+                            </td>
+                            <td class="date-box">
+                                <div>{{date_day}}</div>
+                                <div>{{date_time}}</div>
+                            </td>
+                        </tr>
+                        </table>
+                    </h2>
 
-            <div class="ui-body ui-body-a ui-corner-all comments-area">            
-                <ul data-role="listview" class="comments-list">
-                </ul>
+                    <div id="inner_{{content_id}}" class="content-box ui-body ui-body-a ui-corner-all">{{content}}</div>
+                </div>
+
+                <div class="comments-area ui-body ui-body-a ui-corner-all">            
+                    <ul data-role="listview" class="comments-list">
+                    </ul>
+                </div>
             </div>
-
         </div>
     </div>
 </script>

@@ -2,14 +2,8 @@
 // Navigation
 
 function setActions() {
-    // Header
-	$('#btn_expand').click(function() { onExpand(); });
     // Panel
 	$('#btn_change').click(function() { onChange(); });
-    // Navigation
-	$('#btn_home').click(function() { onHome(); });
-	$('#btn_next').click(function() { onNext(); });
-	$('#btn_prev').click(function() { onPrev(); });
 }
 
 function setButtons() {
@@ -139,7 +133,7 @@ function onExpand() {
 }
 
 function activeListId(page) {
-    var id = '#' + page.attr('id') + ' .main-content .livejournal';
+    var id = '#' + page.attr('id') + ' .main-content .feed-list';
     return id;
 }
 

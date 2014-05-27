@@ -10,9 +10,12 @@ function onComments(data) {
     $('#header_main').html(t);
     $('#header_main').toolbar('refresh');
 
-	$('#btn_feed').click(function() { onFeed(data); });
+    var ft = $.Mustache.render('post-footer-template', data);
+
+    $('#footer_main').html(ft);
+    $('#footer_main').toolbar('refresh');
 	
-	$('#footer_main').toolbar('hide');
+	$('#btn_feed').click(function() { onFeed(data); });
 	
 	showCommentsPage(data);
 }

@@ -1,20 +1,24 @@
 /* Feed Page CSS */
 
+.feed-list {
+	margin-top: 0 !important;
+}
+
 .avatar-box {
-    width: 80px;
-    height: 80px;
+	width: 5em;
+	height: 5em;
     text-align: center;
 //	background-color: red;
 }
 
 .avatar-icon {
     vertical-align: middle;
-    max-width: 48px;
-    max-height: 48px;
-    border-top-left-radius: 5px !important;
-    border-top-right-radius: 5px !important;    
-    border-bottom-left-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
+    max-width: 3em;
+    max-height: 3em;
+    border-top-left-radius: 0.3em !important;
+    border-top-right-radius: 0.3em !important;    
+    border-bottom-left-radius: 0.3em !important;
+    border-bottom-right-radius: 0.3em !important;
 }
 
 .title-box {
@@ -23,14 +27,14 @@
 }
 
 .date-box {
-    width: 100px;
+    width: 6.25em;
 	font-weight: normal;
     text-align: center;
 //	background-color: green;
 }
 
 .comments-box {
-    width: 100px;
+    width: 6.25em;
 //	background-color: yellow;
 }
 
@@ -70,9 +74,9 @@
 
 .content-item .ui-collapsible-content {  
     padding-bottom: 0;
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 3px;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    padding-top: 0.2em;
 //	background-color: green;
 }
 

@@ -17,6 +17,7 @@ function addRecord(record, user, id) {
         author    : formatAuthor(record, user),
         button_id : 'btn_' + record.itemid,
         count     : record.reply_count,
+        count_text: formatCountText(record.reply_count),
         content_id: r_content_id,
         content   : formatContent(record, r_content_id, id),
         page_title: $('#header_main h1').text(),
@@ -39,15 +40,22 @@ function addRecord(record, user, id) {
 }
 
 function onFeed(data) {
-    var t = $.Mustache.render('feed-header-template', data);
+    var ht = $.Mustache.render('feed-header-template', data);
 
-    $('#header_main').html(t);
+    $('#header_main').html(ht);
     $('#header_main').toolbar('refresh');
 
 	$('#btn_expand').click(function() { onExpand(); });
 	
-	$('#footer_main').toolbar('show');
+    var ft = $.Mustache.render('feed-footer-template', data);
+
+    $('#footer_main').html(ft);
+    $('#footer_main').toolbar('refresh');
 	
+	$('#btn_home').click(function() { onHome(); });
+	$('#btn_next').click(function() { onNext(); });
+	$('#btn_prev').click(function() { onPrev(); });
+
 	if(data != undefined) {
         removeCommentsPage();
 	}
@@ -102,6 +110,13 @@ function formatTitle(record, id, parent_id) {
         return '';
     }
     return '.';
+}
+
+function formatCountText(count) {
+    if (count <= 0) {
+        return 'No Comments';
+    }
+    return count + ' Comments';
 }
 
 function formatContent(record, id, parent_id) {
