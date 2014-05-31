@@ -28,9 +28,9 @@
 <script id="feed-page-template" type="text/html">
     <div data-role="page" id="{{page_id}}" data-title="{{page_title}}" data-page-number="{{page_number}}">
         <div role="main" class="main-content ui-content">
-		    <div class="main-body ui-body ui-body-a ui-corner-all">
+		    <div class="main-body ui-body ui-body-a ui-corner-all" data-iscroll="">
             	<ul data-role="listview" data-list-expanded="{{expanded}}" class="feed-list"></ul>
-	        </div>
+			</div>
         </div>
     </div>
 </script>
@@ -83,7 +83,7 @@
 <script id="post-page-template" type="text/html">
     <div data-role="page" id="post_page">
         <div role="main" class="main-content ui-content">
-            <div class="main-body">
+            <div class="main-body" data-iscroll="">
                 <div class="comments-area ui-body ui-body-a ui-corner-all">            
                     <h2>
                         <table class="title-table">
