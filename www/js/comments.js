@@ -25,18 +25,20 @@ function showCommentsPage(data) {
 
     createCommentsPage(t);
 
-    var content = $('#' + data.content_id).html();
-    $('#inner_' + data.content_id).html(content);
+    setTimeout(function() {
+        var content = $('#' + data.content_id).html();
+        $('#inner_' + data.content_id).html(content);
+    }, 0);    
+    
+    setTimeout(function() {
+        $.mobile.loading('show');
+    }, 0);    
 
     var id = '#' + 'post_page' + ' .main-content .comments-list';
 
-    $.mobile.loading('show');
-
-    $.livejournal.getcomments(window.lj_conf.journal, data.itemid, data.anum, addComment, id, doneLC);
-}
-
-function doneLC() {
-    $.mobile.loading('hide');
+    setTimeout(function() {
+        $.livejournal.getcomments(window.lj_conf.journal, data.itemid, data.anum, id, addComments);
+    }, 0);    
 }
 
 function createCommentsPage(data) {
@@ -48,30 +50,51 @@ function createCommentsPage(data) {
     });
 }
 
-function addComment(comment, id) {
+function addComments(comments, id) {
 
-//    console.log(comment);
+    setTimeout(function() {
+        var i = 0;
+        addComment(i, comments, id);
+    }, 0);
+             
+    setTimeout(function() {
+        $.mobile.loading('hide');
+    }, 0);
+}
 
-    var r_body_id = 'body_' + comment.dtalkid;
-    var r_children_id = 'children_' + comment.dtalkid;
+function addComment(i, comments, id) {
 
-    var comment_data = {
-        date       : formatUnixDate(comment.datepostunix),
-        body_id    : r_body_id,
-        body       : formatBody(comment, r_body_id, id),
-        poster     : formatPoster(comment),
-        children_id: r_children_id
-    };
+    if (i < comments.length) {
+        console.log('addComment: ' + i + ' ' + comments.length);
 
-    var t = $.Mustache.render('post-template', comment_data);
+        var r_body_id = 'body_' + comments[i].dtalkid;
+        var r_children_id = 'children_' + comments[i].dtalkid;
 
-    $(id).append(t).enhanceWithin();
+        var comment_data = {
+            date       : formatUnixDate(comments[i].datepostunix),
+            body_id    : r_body_id,
+            body       : formatBody(comments[i], r_body_id, id),
+            poster     : formatPoster(comments[i]),
+            children_id: r_children_id
+        };
 
-    $('.post-item .ui-collapsible-content').autumn();
+        var t = $.Mustache.render('post-template', comment_data);
 
-    $(id).listview('refresh');
+        $(id).append(t).enhanceWithin();
 
-    addChildren(comment, '#' + r_children_id);
+        $('.post-item .ui-collapsible-content').autumn();
+
+        $(id).listview('refresh');
+
+        setTimeout(function() {
+            addChildren(comments[i], '#' + r_children_id);
+        }, 0);
+        
+        setTimeout(function() {
+            i++;
+            addComment(i, comments, id);
+        }, 0);
+    }
 }
 
 function addChildren(comment, id) {
@@ -88,9 +111,10 @@ function addChildren(comment, id) {
 
         $(id).append(t).enhanceWithin();
 
-	    $.each( comment.children, function( i, item ) {
-		    addComment(item, '#' + r_list_id);
-	    });
+        setTimeout(function() {
+            var i = 0;
+            addComment(i, comment.children, '#' + r_list_id);
+        }, 0);
     }
 }
 

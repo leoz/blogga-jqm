@@ -75,13 +75,7 @@ $(document).on('pagecreate', '[data-role=page]', function(e) {
     console.log('pagecreate: ' + page_id);
     if (page_id != 'post_page' && page_id != 'main_page') {
         var id = '#' + page_id + ' .main-content .feed-list';
-        // Convert the local date to UTC
-		var s = $.format.date(window.lj_conf.date, 'yyyy-MM-ddTHH:mm:ss');
-        var date_local = new Date(s);
-        var date_utc = date_local.toISOString();
-        var s_utc = $.format.date(date_utc, window.lj_conf.format);
-        console.log('Date UTC: ' + s_utc);
-        $.livejournal.getevents(s_utc, window.lj_conf.journal, window.lj_conf.number, addRecord, id, doneReading);
+        loadFeed(id);
     }
 });
 

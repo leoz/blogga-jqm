@@ -20,7 +20,7 @@
         });
     };
     
-    $.livejournal.getevents = function(date, user, count, cb_event, id, cb_done) {
+    $.livejournal.getevents = function(date, user, count, id, callback) {
         var lj_method = 'LJ.XMLRPC.getevents';
 	    $.xmlrpc({
 	        url: LJ_URL,
@@ -34,12 +34,7 @@
 		    } ],
 	        success: function(response, status, jqXHR) {
 	            success(lj_method, response, status);
-			    $.each( response[0].events, function( i, item ) {
-				    cb_event(item, user, id);
-			    });
-                var count = response[0].events.length;
-                var date = ((count > 0) ? response[0].events[count-1].eventtime : '');
-                cb_done(count, date);
+	            callback(response[0].events, user, id);
 		    },
 	        error: function(jqXHR, status, error) {
                 error(lj_method, status, error);
@@ -47,7 +42,7 @@
 	    });
     }
 
-    $.livejournal.getcomments = function(user, itemid, anum, cb_event, id, cb_done) {
+    $.livejournal.getcomments = function(user, itemid, anum, id, callback) {
         var ditemid = itemid * 256 + anum;
         var lj_method = 'LJ.XMLRPC.getcomments';
 	    $.xmlrpc({
@@ -60,10 +55,7 @@
 		    } ],
 	        success: function(response, status, jqXHR) {
 	            success(lj_method, response, status);
-			    $.each( response[0].comments, function( i, item ) {
-				    cb_event(item, id);
-			    });	            
-                cb_done();
+	            callback(response[0].comments, id);
 		    },
 	        error: function(jqXHR, status, error) {
                 error(lj_method, status, error);

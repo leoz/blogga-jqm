@@ -1,42 +1,76 @@
 
 // Feed parsing
 
-function addRecord(record, user, id) {
+function loadFeed(id) {
 
-    var r_title_id = 'title_' + record.itemid;
+    setTimeout(function() {
+        // Convert the local date to UTC
+	    var s = $.format.date(window.lj_conf.date, 'yyyy-MM-ddTHH:mm:ss');
+        var date_local = new Date(s);
+        var date_utc = date_local.toISOString();
+        var s_utc = $.format.date(date_utc, window.lj_conf.format);
+        console.log('Date UTC: ' + s_utc);
+        $.livejournal.getevents(s_utc, window.lj_conf.journal, window.lj_conf.number, id, addRecords);
+    }, 0);    
+}
 
-    var r_content_id = 'content_' + record.itemid;
+function addRecords(events, user, id) {
 
-    var feed_data = {
-        collapsed : (!window.lj_conf.expanded),
-        avatar    : formatAvatar(record),
-        date_day  : formatDateDay(record.eventtime),
-        date_time : formatDateTime(record.eventtime),
-        title_id  : r_title_id,
-        title     : formatTitle(record, r_title_id, id),
-        author    : formatAuthor(record, user),
-        button_id : 'btn_' + record.itemid,
-        count     : record.reply_count,
-        count_text: formatCountText(record.reply_count),
-        content_id: r_content_id,
-        content   : formatContent(record, r_content_id, id),
-        page_title: $('#header_main h1').text(),
-        itemid    : record.itemid,
-        anum      : record.anum
-    };
+    setTimeout(function() {
+        var i = 0;
+        addRecord(i, events, user, id);
+    }, 0);
 
-    var t = $.Mustache.render('feed-template', feed_data);
+    var count = events.length;
+    var date = ((count > 0) ? events[count-1].eventtime : '');
+    doneReading(count, date);
+}
 
-    $(id).append(t).enhanceWithin();
-    
-	$('#' + feed_data.button_id).click(function(e) {
-        onComments(feed_data);
-        e.preventDefault();
-        e.stopPropagation();   
-        e.stopImmediatePropagation();
-	});
-    
-    $(id).listview('refresh');
+function addRecord(i, records, user, id) {
+
+    if (i < records.length) {
+//        console.log('addRecord: ' + i + ' ' + records.length);
+
+        var r_title_id = 'title_' + records[i].itemid;
+
+        var r_content_id = 'content_' + records[i].itemid;
+
+        var feed_data = {
+            collapsed : (!window.lj_conf.expanded),
+            avatar    : formatAvatar(records[i]),
+            date_day  : formatDateDay(records[i].eventtime),
+            date_time : formatDateTime(records[i].eventtime),
+            title_id  : r_title_id,
+            title     : formatTitle(records[i], r_title_id, id),
+            author    : formatAuthor(records[i], user),
+            button_id : 'btn_' + records[i].itemid,
+            count     : records[i].reply_count,
+            count_text: formatCountText(records[i].reply_count),
+            content_id: r_content_id,
+            content   : formatContent(records[i], r_content_id, id),
+            page_title: $('#header_main h1').text(),
+            itemid    : records[i].itemid,
+            anum      : records[i].anum
+        };
+
+        var t = $.Mustache.render('feed-template', feed_data);
+
+        $(id).append(t).enhanceWithin();
+        
+	    $('#' + feed_data.button_id).click(function(e) {
+            onComments(feed_data);
+            e.preventDefault();
+            e.stopPropagation();   
+            e.stopImmediatePropagation();
+	    });
+        
+        $(id).listview('refresh');
+        
+        setTimeout(function() {
+            i++;
+            addRecord(i, records, user, id);
+        }, 0);       
+    }
 }
 
 function onFeed(data) {
