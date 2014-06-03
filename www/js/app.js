@@ -53,6 +53,15 @@ $(document).on('pagecontainerbeforeshow', function(e, ui) {
         var title = activePage().data('title');
         $('[data-role="header"] h1').text( title );
     }
+    
+    // Fix iscroll event handling for lazy image loading
+    $('.iscroll-wrapper', this).bind( {
+        iscroll_onscrollend : function() {
+//            console.log('.iscroll-wrapper -> iscroll_onscrollend');
+            $('.main-body').iscrollview('refresh');
+            $('.main-body').trigger('scroll');
+        }
+    });     
 });
 
 $( document ).on( "pagecontainershow", function( event, data ) {

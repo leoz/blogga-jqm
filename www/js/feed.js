@@ -31,11 +31,12 @@ function addRecord(i, records, user, id) {
     if (i < records.length) {
 //        console.log('addRecord: ' + i + ' ' + records.length);
 
+        var r_citem_id = 'citem_' + records[i].itemid;
         var r_title_id = 'title_' + records[i].itemid;
-
         var r_content_id = 'content_' + records[i].itemid;
 
         var feed_data = {
+			citem_id  : r_citem_id,
             collapsed : (!window.lj_conf.expanded),
             avatar    : formatAvatar(records[i]),
             date_day  : formatDateDay(records[i].eventtime),
@@ -63,7 +64,11 @@ function addRecord(i, records, user, id) {
             e.stopPropagation();   
             e.stopImmediatePropagation();
 	    });
-        
+
+		$('#' + feed_data.citem_id).on('collapsibleexpand', function(event, ui) {
+			prepImages('#' + feed_data.content_id);
+		});
+
         $(id).listview('refresh');
         
         setTimeout(function() {
@@ -157,12 +162,43 @@ function formatContent(record, id, parent_id) {
     if (record.hasOwnProperty('event')) {
         array_buffer_to_string(record.event, 
             function (string) {
-			    $(parent_id + ' #' + id).append(string);
+				var cid = parent_id + ' #' + id;
+			    $(cid).append(string);
+				hideImages(cid);
             }
         );
         return '';
     }
     return '.';
+}
+
+function hideImages(cid) {
+	$(cid + ' img').each(function() {
+		$(this).attr('data-src', $(this).attr('src'));
+		$(this).attr('src', 'img/blank.gif');
+		$(this).addClass('lazy');
+	});
+}
+
+function prepImages(cid) {
+//	var i = 0;
+    var page = activePage();
+	var id = page.attr('id');
+	$(cid + ' img.lazy').each(function() {
+//		console.log('img.lazy: ' + i++);
+
+		$(this).css('opacity', '0');
+
+		$(this).on('appear', function() {
+			$(this).removeClass('lazy');
+			$(this).attr('src', $(this).attr('data-src'));
+			$(this).hide();
+			$(this).css('opacity', '1');
+			$(this).fadeIn(1000);
+		});
+
+		$(this).initAppear({once: true, container: $('#' + id + ' .main-body')});
+	});
 }
 
 function array_buffer_to_string(buf, callback) {
