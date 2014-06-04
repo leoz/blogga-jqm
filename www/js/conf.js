@@ -7,7 +7,6 @@ window.lj_conf = {
     count : 10,
     date : null,
     expanded : false,
-    journal : null,
     data : {},
     setCurrentDate: function() {
         var d = new Date();
@@ -22,10 +21,6 @@ window.lj_conf = {
     reset: function () {
         this.setCurrentDate();
         this.setCurrentCount();
-    },
-    setJournal: function(journal) {
-        this.reset();
-        this.journal = journal;
     },
     getPageDate: function(page) {
         if (!this.data[page]) {

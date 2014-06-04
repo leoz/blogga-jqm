@@ -1,11 +1,6 @@
 
 // Navigation
 
-function setActions() {
-    // Panel
-	$('#btn_change').click(function() { onChange(); });
-}
-
 function setButtons() {
     if (canAddNext()) {
 		$('#btn_prev').prop('disabled', true).removeClass('ui-disabled');
@@ -100,8 +95,6 @@ function isInTransition() {
 	return ($('body.ui-mobile-viewport-transitioning').length !== 0);
 }
 
-// Panel
-
 function onHome() {
     console.log('onHome');
     window.lj_conf.reset();
@@ -109,13 +102,6 @@ function onHome() {
     $('[data-role="header"] h1').text( ' - ' );
     showInitialPage();
 	setButtons();
-}
-
-function onChange() {
-    var journal = $('#journal-input').val();
-    window.lj_conf.setJournal(journal);
-    console.log('onChange: ' + window.lj_conf.journal);
-    onHome();
 }
 
 // Header

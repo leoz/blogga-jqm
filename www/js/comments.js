@@ -37,7 +37,7 @@ function showCommentsPage(data) {
     var id = '#' + 'post_page' + ' .main-content .comments-list';
 
     setTimeout(function() {
-        $.livejournal.getcomments(window.lj_conf.journal, data.itemid, data.anum, id, addComments);
+        $.livejournal.getcomments(window.lj_data.current, data.itemid, data.anum, id, addComments);
     }, 0);    
 }
 

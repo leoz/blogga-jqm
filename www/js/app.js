@@ -10,13 +10,6 @@ $(function() {
     $('[data-role="header"], [data-role="footer"]').toolbar();
     $('[data-role="panel"]').panel();
     
-    // Set settings
-    $('#journal-input').val(window.lj_conf.journal);
-    $('[data-role="controlgroup"]').enhanceWithin();
-
-	// Set button actions
-	setActions();
-
     // Init colors
     $.fn.autumn.init({
         colorProfile:['hsl', 40, 80, 85, 95],
@@ -29,6 +22,8 @@ $(function() {
     // Load templates
     $.Mustache.load('templates.html').done(function () {
         console.log('Mustache.load is done');
+		// Init panel
+		initPanel();
         // Create first page
         onFeed();
 	    onHome();
@@ -42,8 +37,8 @@ $(function() {
 });
 
 $(document).on('pagecontainercreate', function() {
-	// Set Journal
-    window.lj_conf.setJournal('toronto-ru');
+	// Reset config
+	window.lj_conf.reset();
 });
 
 $(document).on('pagecontainerbeforeshow', function(e, ui) {

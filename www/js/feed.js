@@ -10,7 +10,7 @@ function loadFeed(id) {
         var date_utc = date_local.toISOString();
         var s_utc = $.format.date(date_utc, window.lj_conf.format);
         console.log('Date UTC: ' + s_utc);
-        $.livejournal.getevents(s_utc, window.lj_conf.journal, window.lj_conf.number, id, addRecords);
+        $.livejournal.getevents(s_utc, window.lj_data.current, window.lj_conf.number, id, addRecords);
     }, 0);    
 }
 
