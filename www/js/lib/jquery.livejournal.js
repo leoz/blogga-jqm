@@ -31,7 +31,7 @@
 		    } ],
 	        success: function(response, status, jqXHR) {
 	            log_success(lj_method, response, status);
-	            callback(response, user);
+	            callback(response[0], user);
 		    },
 	        error: function(jqXHR, status, error) {
                 cb_failed(user);

@@ -13,8 +13,9 @@ function initPanel() {
 
 function setJournals() {
 	window.lj_data.init();
+    var def_pic = 'img/avatar.png';
 	$.each(window.lj_data.data, function( i, item ) {
-		addJournal(item);
+		addJournal(item, def_pic);
 	});
 }
 
@@ -31,23 +32,36 @@ function loadJournal(name) {
     }, 0);    
 }
 
-function parseJournal(response, name) {
+function parseJournal(data, name) {
 	console.log('parseJournal - ' + name);
 	
-	parseUserPics(response, name);
-	updateJournals(name);
+	var pic = parseUserPics(data, name);
+	updateJournals(name, pic);
 }
 
-function parseUserPics(response, name) {
+function parseUserPics(data, name) {
 	console.log('parseUserPics - ' + name);
+	console.log(data.defaultpicurl);
+	return formatUserPic(data);
 }
 
-function updateJournals(name) {
+function formatUserPic(data) {
+    var def_pic = 'img/avatar.png';
+    if (data.hasOwnProperty('defaultpicurl')) {
+        return (data.defaultpicurl != '' ? data.defaultpicurl : def_pic);
+    }
+    return def_pic;
+}
+
+function updateJournals(name, pic) {
 	console.log('updateJournals - ' + name);
 	// Update the journal list
 	var found = selectJournal(name);
 	if (!found) {
-		addJournal(name);
+		addJournal(name, pic);
+	}
+	else {
+	    $('ul.journal-list #img_' + name).attr('src', pic);
 	}
 
 	setJournal(name);
@@ -66,9 +80,10 @@ function setJournal(name) {
     onHome();
 }
 
-function addJournal(name) {
+function addJournal(name, pic) {
 
 	var r_li_id     = 'li_' + name;
+	var r_img_id    = 'img_' + name;
 	var r_btn_go_id = 'btn_go_' + name;
 	var r_btn_rm_id = 'btn_rm_' + name;
 	
@@ -76,6 +91,8 @@ function addJournal(name) {
 
     var journal_data = {
 		li_id    : r_li_id,
+		img_id   : r_img_id,
+		img_pic  : pic,
 		name     : name,
         btn_go_id: r_btn_go_id,
         btn_rm_id: r_btn_rm_id
