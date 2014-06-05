@@ -40,11 +40,15 @@ function loadJournal(name) {
 
 function addJournal(name) {
 
+	var r_li_id     = 'li_' + name;
 	var r_btn_go_id = 'btn_go_' + name;
 	var r_btn_rm_id = 'btn_rm_' + name;
+	
+	var text_id = '#' + r_li_id + ' .journal-name';
 
     var journal_data = {
-		name  : name,
+		li_id    : r_li_id,
+		name     : name,
         btn_go_id: r_btn_go_id,
         btn_rm_id: r_btn_rm_id
     };
@@ -58,17 +62,16 @@ function addJournal(name) {
 	    e.preventDefault();
 	    $('[data-role="panel"] [data-role="listview"] a.ui-btn-active').removeClass('ui-btn-active');
 		$(this).addClass('ui-btn-active');
-		var name = $(this).text();
+		var name = $(text_id).text();
     	$('#journal-input').val(name);
 		loadJournal(name);
 	});
 
 	$('#' + journal_data.btn_rm_id).click(function(e) {
 	    e.preventDefault();
-	    $(this).parent().remove();
 		// Remove journal
-		window.lj_data.remJournal($(this).attr('title'));
-//		console.log('pressed btn remove');
+		window.lj_data.remJournal($(text_id).text());
+	    $(this).parent().remove();
 	});
 }
 
@@ -77,7 +80,7 @@ function setJournal(name) {
     $('[data-role="panel"] [data-role="listview"] a.ui-btn-active').removeClass('ui-btn-active');
     // Add active class to current list button
     $('[data-role="panel"] [data-role="listview"] a').each(function() {
-        if ( $(this).text() === name ) {
+        if ( $('.journal-name', this).text() === name ) {
             $(this).addClass('ui-btn-active');
 			result = true;
         }

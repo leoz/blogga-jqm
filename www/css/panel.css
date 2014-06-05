@@ -1,0 +1,21 @@
+/* Panel CSS */
+
+.journal-list .ui-li-has-thumb > img:first-child,
+.journal-list .ui-li-has-thumb > .ui-btn > img:first-child,
+.journal-list .ui-li-has-thumb .ui-li-thumb {
+    max-width: 2em;
+    max-height: 2em;
+    margin-left: 0.3em;
+    margin-top: 0.3em;
+    border-top-left-radius: 0.2em !important;
+    border-top-right-radius: 0.2em !important;    
+    border-bottom-left-radius: 0.2em !important;
+    border-bottom-right-radius: 0.2em !important;
+}
+
+.journal-list > .ui-li-has-thumb > .ui-btn,
+.journal-list > .ui-li-static.ui-li-has-thumb {
+    min-height: 0;
+    padding-left: 2.6em;
+}
+
