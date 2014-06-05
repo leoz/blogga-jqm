@@ -6,12 +6,12 @@ function initPanel() {
 	$('body > [data-role="panel"] [data-role="controlgroup"]').enhanceWithin();
 	$('body > [data-role="panel"] [data-role="listview"]').listview();
 	// Init panel widgets
-	loadJournals();
+	setJournals();
     $('#journal-input').val(window.lj_data.current);
 	$('#btn_change').click(function() { onChange(); });
 }
 
-function loadJournals() {
+function setJournals() {
 	window.lj_data.init();
 	$.each(window.lj_data.data, function( i, item ) {
 		addJournal(item);
@@ -21,20 +21,48 @@ function loadJournals() {
 function onChange() {
     var name = $('#journal-input').val();
 
-	var found = setJournal(name);
-	if (!found) {
-		addJournal(name);
-	}
-
 	loadJournal(name);
 }
 
 function loadJournal(name) {
+    // Test journal loading
+    setTimeout(function() {
+        $.livejournal.getuserpics(name, parseJournal, loadJournalFailed);
+    }, 0);    
+}
+
+function parseJournal(response, name) {
+	console.log('parseJournal - ' + name);
+	
+	parseUserPics(response, name);
+	updateJournals(name);
+}
+
+function parseUserPics(response, name) {
+	console.log('parseUserPics - ' + name);
+}
+
+function updateJournals(name) {
+	console.log('updateJournals - ' + name);
+	// Update the journal list
+	var found = selectJournal(name);
+	if (!found) {
+		addJournal(name);
+	}
+
+	setJournal(name);
+}
+
+function loadJournalFailed(name) {
+	console.log('loadJournalFailed - ' + name);
+}
+
+function setJournal(name) {
 	// Reset config
 	window.lj_conf.reset();
 	// Set journal
     window.lj_data.setCurrent(name);
-    console.log('loadJournal: ' + window.lj_data.current);
+    console.log('setJournal: ' + window.lj_data.current);
     onHome();
 }
 
@@ -64,7 +92,7 @@ function addJournal(name) {
 		$(this).addClass('ui-btn-active');
 		var name = $(text_id).text();
     	$('#journal-input').val(name);
-		loadJournal(name);
+		setJournal(name);
 	});
 
 	$('#' + journal_data.btn_rm_id).click(function(e) {
@@ -75,7 +103,7 @@ function addJournal(name) {
 	});
 }
 
-function setJournal(name) {
+function selectJournal(name) {
 	var result = false;
     $('[data-role="panel"] [data-role="listview"] a.ui-btn-active').removeClass('ui-btn-active');
     // Add active class to current list button

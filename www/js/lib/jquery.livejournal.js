@@ -20,7 +20,7 @@
         });
     }
 
-    $.livejournal.getuserpics = function(user, callback) {
+    $.livejournal.getuserpics = function(user, callback, cb_failed) {
         var lj_method = 'LJ.XMLRPC.getuserpics';
 	    $.xmlrpc({
 	        url: LJ_URL,
@@ -34,6 +34,7 @@
 	            callback(response, user);
 		    },
 	        error: function(jqXHR, status, error) {
+                cb_failed(user);
                 log_error(lj_method, status, error);
 		    }
 	    });
