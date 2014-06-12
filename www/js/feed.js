@@ -10,7 +10,7 @@ function loadFeed(id) {
         var date_utc = date_local.toISOString();
         var s_utc = $.format.date(date_utc, window.lj_conf.format);
         console.log('Date UTC: ' + s_utc);
-        $.livejournal.getevents(s_utc, window.lj_data.current, window.lj_conf.number, id, addRecords);
+        $.livejournal.getevents(s_utc, window.db_journals.current, window.lj_conf.number, id, addRecords);
     }, 0);    
 }
 
@@ -35,10 +35,13 @@ function addRecord(i, records, user, id) {
         var r_title_id = 'title_' + records[i].itemid;
         var r_content_id = 'content_' + records[i].itemid;
 
+		var r_pic = formatUserPic(records[i], user);
+
         var feed_data = {
 			citem_id  : r_citem_id,
             collapsed : (!window.lj_conf.expanded),
-            avatar    : formatAvatar(records[i]),
+			pic_cls   : r_pic.pic_class,
+            avatar    : r_pic.pic_image,
             date_day  : formatDateDay(records[i].eventtime),
             date_time : formatDateTime(records[i].eventtime),
             title_id  : r_title_id,
@@ -76,6 +79,29 @@ function addRecord(i, records, user, id) {
             addRecord(i, records, user, id);
         }, 0);       
     }
+}
+
+function formatUserPic(record, user) {
+	var pic = {
+		pic_class : '',
+		pic_image : ''
+	};
+
+	if (record.hasOwnProperty('poster_userpic_url')) {
+		pic.pic_class = '';
+		pic.pic_image = record.poster_userpic_url;
+	}
+	else {
+		pic.pic_class = window.db_userpics.prefix + user;
+		if (record.hasOwnProperty('poster')) {
+			pic.pic_image = window.db_userpics.getUserPic(record.poster);
+		}
+		else {
+			pic.pic_image = window.db_userpics.getUserPic(user);
+		}
+	}
+
+	return pic;
 }
 
 function onFeed(data) {
@@ -130,13 +156,6 @@ function formatAuthor(record, user) {
         return record.poster;
     }
     return user;
-}
-
-function formatAvatar(record) {
-    if (record.hasOwnProperty('poster_userpic_url')) {
-        return record.poster_userpic_url;
-    }
-    return 'img/avatar.png';
 }
 
 function formatTitle(record, id, parent_id) {

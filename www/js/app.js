@@ -5,6 +5,11 @@ $(function() {
     // BEGIN
     console.log('Ready - BEGIN');
 
+	// Init databases
+	window.db_blobs.init();
+	window.db_journals.init();
+	window.db_userpics.init();
+
     // Set toolbars and panels
     $('[data-role="navbar"]').navbar();
     $('[data-role="header"], [data-role="footer"]').toolbar();
@@ -59,12 +64,12 @@ $(document).on('pagecontainerbeforeshow', function(e, ui) {
     });     
 });
 
-$( document ).on( "pagecontainershow", function( event, data ) {
+$(document).on('pagecontainershow', function( event, data ) {
     // Set page sizes
     resizePage();
 });
 
-$(window).on("resize orientationchange", function() {
+$(window).on('resize orientationchange', function() {
     // Set page sizes
     resizePage();
 });
@@ -129,4 +134,14 @@ function setHeaderWidth() {
 		$("[data-role='header']").width($(window).width());
 	}
 }
+
+// Exit handling
+
+$(window).on('unload beforeunload', function() {
+    console.log('Window unload');
+	// Close databases
+	window.db_blobs.close();
+	window.db_journals.close();
+	window.db_userpics.close();
+});
 

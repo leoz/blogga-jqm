@@ -37,7 +37,7 @@ function showCommentsPage(data) {
     var id = '#' + 'post_page' + ' .main-content .comments-list';
 
     setTimeout(function() {
-        $.livejournal.getcomments(window.lj_data.current, data.itemid, data.anum, id, addComments);
+        $.livejournal.getcomments(window.db_journals.current, data.itemid, data.anum, id, addComments);
     }, 0);    
 }
 
@@ -70,7 +70,18 @@ function addComment(i, comments, id) {
         var r_body_id = 'body_' + comments[i].dtalkid;
         var r_children_id = 'children_' + comments[i].dtalkid;
 
+		var r_pic_cls = '';
+		var r_avatar = window.db_userpics.defpic;
+
+		if (comments[i].hasOwnProperty('postername')) {
+			var poster = comments[i].postername;
+		    r_pic_cls = window.db_userpics.prefix + poster;
+			r_avatar = window.db_userpics.getUserPic(poster);
+		}
+
         var comment_data = {
+			pic_cls    : r_pic_cls,
+			avatar     : r_avatar,
             date       : formatUnixDate(comments[i].datepostunix),
             body_id    : r_body_id,
             body       : formatBody(comments[i], r_body_id, id),

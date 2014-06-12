@@ -2,7 +2,7 @@
 <script id="journal-template" type="text/html">
     <li id="{{li_id}}">
 		<a href="#" id="{{btn_go_id}}">
-			<img id="{{img_id}}" src="{{img_pic}}" />
+			<img id="{{img_id}}" class="{{pic_cls}}" src="{{avatar}}" />
 			<div class="journal-name">{{name}}</div>
 		</a>
 		<a href="#" id="{{btn_rm_id}}"></a>
@@ -51,7 +51,7 @@
         <h2>
             <table class="title-table">
             <tr>
-                <td class="avatar-box"><img class="avatar-icon" src="{{avatar}}"/></td>
+                <td class="avatar-box"><img class="{{pic_cls}} avatar-icon" src="{{avatar}}"/></td>
                 <td class="title-box">
                     <div class="title-name" id="{{title_id}}">{{title}}</div>
                     <div class="title-user">{{author}}</div>
@@ -98,7 +98,7 @@
                     <h2>
                         <table class="title-table">
                         <tr>
-                            <td class="avatar-box"><img class="avatar-icon" src="{{avatar}}"/></td>
+                            <td class="avatar-box"><img class="{{pic_cls}} avatar-icon" src="{{avatar}}"/></td>
                             <td class="title-box">
                                 <div class="title-name" id="{{title_id}}">{{title}}</div>
                                 <div class="title-user">{{author}}</div>
@@ -130,7 +130,7 @@
         <h2>
             <table class="title-table">
             <tr>
-                <td class="avatar-box"><img class="avatar-icon" src="img/avatar.png"/></td>
+                <td class="avatar-box"><img class="{{pic_cls}} avatar-icon" src="{{avatar}}"/></td>
                 <td class="title-box" valign="top">
                     <div class="title-date">{{date}}</div>
                     <div class="title-user">{{poster}}</div>
