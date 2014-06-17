@@ -9,9 +9,7 @@ window.lj_conf = {
     expanded : false,
     data : {},
     setCurrentDate: function() {
-        var d = new Date();
-        var t = $.format.date(d, this.format);
-        this.date = t;
+		this.date = null;
     },
     setCurrentCount: function() {
 		var num = parseInt($( window ).height() / 54) - 2;

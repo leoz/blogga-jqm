@@ -4,13 +4,7 @@
 function loadFeed(id) {
 
     setTimeout(function() {
-        // Convert the local date to UTC
-	    var s = $.format.date(window.lj_conf.date, 'yyyy-MM-ddTHH:mm:ss');
-        var date_local = new Date(s);
-        var date_utc = date_local.toISOString();
-        var s_utc = $.format.date(date_utc, window.lj_conf.format);
-        console.log('Date UTC: ' + s_utc);
-        $.livejournal.getevents(s_utc, window.db_journals.current, window.lj_conf.number, id, addRecords);
+        $.livejournal.getevents(window.lj_conf.date, window.db_journals.current, window.lj_conf.number, id, addRecords);
     }, 0);    
 }
 
@@ -31,15 +25,17 @@ function addRecord(i, records, user, id) {
     if (i < records.length) {
 //        console.log('addRecord: ' + i + ' ' + records.length);
 
-        var r_citem_id = 'citem_' + records[i].itemid;
-        var r_title_id = 'title_' + records[i].itemid;
+        var r_citem_id   = 'citem_' + records[i].itemid;
+        var r_pic_id     = 'pic_' + records[i].itemid;
+        var r_title_id   = 'title_' + records[i].itemid;
         var r_content_id = 'content_' + records[i].itemid;
 
-		var r_pic = formatUserPic(records[i], user);
+		var r_pic = formatUserPic(records[i], r_pic_id, id, user);
 
         var feed_data = {
 			citem_id  : r_citem_id,
             collapsed : (!window.lj_conf.expanded),
+            pic_id    : r_pic_id,
 			pic_cls   : r_pic.pic_class,
             avatar    : r_pic.pic_image,
             date_day  : formatDateDay(records[i].eventtime),
@@ -81,7 +77,7 @@ function addRecord(i, records, user, id) {
     }
 }
 
-function formatUserPic(record, user) {
+function formatUserPic(record, id, parent_id, user) {
 	var pic = {
 		pic_class : '',
 		pic_image : ''
@@ -92,12 +88,23 @@ function formatUserPic(record, user) {
 		pic.pic_image = record.poster_userpic_url;
 	}
 	else {
-		pic.pic_class = window.db_userpics.prefix + user;
+		var name = user;
+
 		if (record.hasOwnProperty('poster')) {
-			pic.pic_image = window.db_userpics.getUserPic(record.poster);
+			name = record.poster;
+		}
+
+		if (record.hasOwnProperty('props') && 
+            record.props.hasOwnProperty('picture_keyword')) {
+
+			formatAltImage(record, id, parent_id, name);
+
+			//pic.pic_class = window.db_userpics.prefix + name + '-' + record.props.picture_keyword;
+			//pic.pic_image = window.db_userpics.getCustomUserPic(name, record.props.picture_keyword);
 		}
 		else {
-			pic.pic_image = window.db_userpics.getUserPic(user);
+			pic.pic_class = window.db_userpics.prefix + name;
+			pic.pic_image = window.db_userpics.getUserPic(name);
 		}
 	}
 
@@ -170,6 +177,25 @@ function formatTitle(record, id, parent_id) {
     return '.';
 }
 
+function formatAltImage(record, id, parent_id, name) {
+	if (record.hasOwnProperty('props') && 
+        record.props.hasOwnProperty('picture_keyword')) {
+
+        array_buffer_to_string(record.props.picture_keyword, 
+            function (string) {
+				var p_class = window.db_userpics.prefix + name + '-' + string;
+				var p_image = window.db_userpics.getCustomUserPic(name, string);
+				var p_id = parent_id + ' #' + id;
+
+				console.log('formatAltImage image is ' + p_id);
+
+				$(p_id).attr('alt', p_class);
+				$(p_id).attr('src', p_image);
+            }
+        );
+	}
+}
+
 function formatCountText(count) {
     if (count <= 0) {
         return 'No Comments';
@@ -218,15 +244,5 @@ function prepImages(cid) {
 
 		$(this).initAppear({once: true, container: $('#' + id + ' .main-body')});
 	});
-}
-
-function array_buffer_to_string(buf, callback) {
-
-    var bb = new Blob([buf]);
-    var f = new FileReader();
-    f.onload = function(e) {
-        callback(e.target.result)
-    }
-    f.readAsText(bb);
 }
 

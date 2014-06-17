@@ -42,16 +42,19 @@
     
     $.livejournal.getevents = function(date, user, count, id, callback) {
         var lj_method = 'LJ.XMLRPC.getevents';
-	    $.xmlrpc({
-	        url: LJ_URL,
-	        methodName: lj_method,
-	        params: [ {
+		var params = {
 			    'ver'        : '1',
 			    'selecttype' : 'lastn',
 			    'howmany'    : count,
-                'usejournal' : user,
-                'beforedate' : date
-		    } ],
+                'usejournal' : user
+		};
+		if (date) {
+			params['beforedate'] = date;
+		}
+	    $.xmlrpc({
+	        url: LJ_URL,
+	        methodName: lj_method,
+			params: [ params ],
 	        success: function(response, status, jqXHR) {
 	            log_success(lj_method, response, status);
 	            callback(response[0].events, user, id);
