@@ -38,12 +38,6 @@
 //	background-color: rgb(37, 37, 37);
 }
 
-.footer-li {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-	background-color: transparent  !important;
-}
-
 /* Content */
 
 .ui-page {
@@ -77,14 +71,22 @@
 	margin: 0 auto !important;
 }
 
+.footer-li {
+	background-color: transparent  !important;
+}
+
 @media only screen and
 	(-webkit-max-device-pixel-ratio: 1) {
+    .footer-li {
+	    margin-top: 0.5em;
+	    margin-bottom: 0.5em;
+    }
 	.footer-button {
 		border-width: 0.2em;
 		border-radius: 3em !important;
 		height: 4em;
 		width: 4em;
-		background-color: red  !important;
+//		background-color: red !important;
 	}
 	.footer-button:after {
 		height: 3em;
@@ -99,12 +101,16 @@
 @media only screen and
 	(-webkit-min-device-pixel-ratio: 1) and
 	(-webkit-max-device-pixel-ratio: 1.4) {
+    .footer-li {
+	    margin-top: 0.5em;
+	    margin-bottom: 0.5em;
+    }	
 	.footer-button {
 		border-width: 0.2em;
 		border-radius: 3em !important;
 		height: 4em;
 		width: 4em;
-		background-color: yellow  !important;
+//		background-color: yellow !important;
 	}
 	.footer-button:after {
 		height: 3em;
@@ -119,27 +125,47 @@
 @media only screen and
 	(-webkit-min-device-pixel-ratio: 1.5) and
 	(-webkit-max-device-pixel-ratio: 1.9) {
+    .footer-li {
+	    margin-top: 0.2em;
+	    margin-bottom: 0.2em;
+    }
 	.footer-button {
-		background-color: green  !important;
+		border-width: 0.1em;
+		border-radius: 2em !important;
+		height: 3em;
+		width: 3em;
+//		background-color: green !important;
+	}
+	.footer-button:after {
+		height: 2.8em;
+		width: 2.8em;
+		background-size: 1.8em 1.8em;
+		border-radius: 2.8em;
+		margin-left: -1.4em;
+		margin-top: -1.4em;
 	}
 }
 
 @media only screen and
 	(-webkit-min-device-pixel-ratio: 2) {
+    .footer-li {
+	    margin-top: 0.2em;
+	    margin-bottom: 0.2em;
+    }
 	.footer-button {
 		border-width: 0.1em;
-		border-radius: 1.5em !important;
-		height: 2em;
-		width: 2em;
-		background-color: pink  !important;
+		border-radius: 2em !important;
+		height: 3em;
+		width: 3em;
+//		background-color: pink !important;
 	}
 	.footer-button:after {
-		height: 1.5em;
-		width: 1.5em;
-		background-size: 1em 1em;
-		border-radius: 1.5em;
-		margin-left: -0.7em;
-		margin-top: -0.7em;
+		height: 2.8em;
+		width: 2.8em;
+		background-size: 1.8em 1.8em;
+		border-radius: 2.8em;
+		margin-left: -1.4em;
+		margin-top: -1.4em;
 	}
 }
 
