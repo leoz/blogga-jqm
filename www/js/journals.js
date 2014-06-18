@@ -86,6 +86,7 @@ function addJournal(name, pic) {
 		var name = $(text_id).text();
     	$('#journal-input').val(name);
 		setJournal(name);
+		$('#panel_main').panel('close');
 	});
 
 	$('#' + journal_data.btn_rm_id).click(function(e) {

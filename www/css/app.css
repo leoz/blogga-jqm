@@ -78,6 +78,7 @@
 	font-family: 'Open Sans', sans-serif !important;
 	font-weight: 400 !important;
 	padding-top: 0;
+	padding-bottom: 0.1em;
 	background: rgb(37, 37, 37);
 }
 
@@ -89,19 +90,20 @@
     overflow-y: auto;
 }
 
-@media all and (min-width: 800px) {
+@media screen and (min-width: 800px) {
 
 }
 
-@media all and (max-width: 799px) {
+@media screen and (max-width: 799px) {
 	.main-content {
 		padding-left: 0;
 		padding-right: 0;
 	}
 	.main-body {
-		padding-left: 0;
-		padding-right: 0;
+		border-bottom-left-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+		padding-left: 0.1em;
+		padding-right: 0.1em;
 	}
 }
-
 
