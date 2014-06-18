@@ -4,6 +4,8 @@
 $(function() {
     // BEGIN
     console.log('Ready - BEGIN');
+    
+    FastClick.attach(document.body);
 
 	// Init databases
 	window.db_blobs.init();
