@@ -12,7 +12,7 @@ window.lj_conf = {
 		this.date = null;
     },
     setCurrentCount: function() {
-		var num = parseInt($( window ).height() / 54) - 2;
+		var num = parseInt(getContentHeight() / em(5)) + 1;
         this.number = num;
         this.count = num;
     },
@@ -33,4 +33,9 @@ window.lj_conf = {
         return this.data[page];
     }
 };
+
+function em(input) {
+    var emSize = parseFloat($('body').css('font-size'));
+    return (emSize * input);
+}
 

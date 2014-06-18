@@ -13,7 +13,7 @@ $(document).on('pagecontainershow', function( event, data ) {
 
 // Resize page
 function resizePage() {
-    setPageHeight();
+    setContentHeight();
 	setHeaderLeftMargin();
     setHeaderWidth();
 //	$('.feed-list').listview('refresh');
@@ -21,13 +21,20 @@ function resizePage() {
 //	$('.main-body').trigger('refresh');
 }
 
-// Set page height
-function setPageHeight() {
+// Set content height
+function setContentHeight() {
+    var content = getContentHeight();
+    $(".ui-content").height(content);
+}
+
+// Get content height
+function getContentHeight() {
     scroll(0, 0);
     var content = $.mobile.getScreenHeight() -
                   $(".ui-header").outerHeight() - $(".ui-footer").outerHeight() -
                   $(".ui-content").outerHeight() + $(".ui-content").height();
-    $(".ui-content").height(content + 2);
+    content = content + 2;
+    return content;
 }
 
 // Set header width
