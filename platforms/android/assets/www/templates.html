@@ -1,0 +1,158 @@
+
+<script id="journal-template" type="text/html">
+    <li id="{{li_id}}">
+		<a href="#" id="{{btn_go_id}}">
+			<img id="{{img_id}}" alt="{{pic_cls}}" class="ava" src="{{avatar}}" />
+			<div class="journal-name">{{name}}</div>
+		</a>
+		<a href="#" id="{{btn_rm_id}}"></a>
+	</li>
+</script>
+
+<script id="feed-header-template" type="text/html">
+    <h1>{{page_title}}</h1>
+    <div class="ui-btn-left">
+        <a href="#panel_main" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-bars"></a>
+    </div>
+    <div class="ui-btn-right">
+        <a href="#" id="btn_expand" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-grid"></a>
+    </div>
+</script>
+
+<script id="feed-footer-template" type="text/html">
+    <div data-role="navbar">
+        <ul>
+            <li class="footer-li">
+				<a href="#" id="btn_next" class="footer-button ui-btn ui-btn-icon-notext ui-icon-carat-l"></a>
+			</li>
+            <li class="footer-li">
+				<a href="#" id="btn_home" class="footer-button ui-btn ui-btn-icon-notext ui-icon-home"></a>
+			</li>
+            <li class="footer-li">
+				<a href="#" id="btn_prev" class="footer-button ui-btn ui-btn-icon-notext ui-icon-carat-r"></a>
+			</li>
+        </ul>
+    </div>
+</script>
+
+<script id="feed-page-template" type="text/html">
+    <div data-role="page" id="{{page_id}}" data-title="{{page_title}}" data-page-number="{{page_number}}">
+        <div role="main" class="main-content ui-content">
+		    <div class="main-body ui-body ui-body-a ui-corner-all" data-iscroll="">
+            	<ul data-role="listview" data-list-expanded="{{expanded}}" class="feed-list"></ul>
+			</div>
+        </div>
+    </div>
+</script>
+
+<script id="feed-template" type="text/html">
+    <li class="content-item" id="{{citem_id}}" data-role="collapsible" data-collapsed="{{collapsed}}"
+        data-inset="false" data-collapsed-icon="false">
+        <h2>
+            <table class="title-table">
+            <tr>
+                <td class="avatar-box">
+					<img id="{{pic_id}}" alt="{{pic_cls}}" class="ava avatar-icon" src="{{avatar}}"/>
+				</td>
+                <td class="title-box">
+                    <div class="title-name" id="{{title_id}}">{{title}}</div>
+                    <div class="title-user">{{author}}</div>
+                </td>
+                <td class="date-box">
+                    <div>{{date_day}}</div>
+                    <div>{{date_time}}</div>
+                </td>
+                <td class="comments-box">
+                    <div data-role="button" class="ui-li-count" id="{{button_id}}">{{count}}</div>
+                </td>
+            </tr>
+            </table>
+        </h2>
+        <div id="{{content_id}}" class="content-box">{{content}}</div>
+    </li>
+</script>
+
+<script id="post-header-template" type="text/html">
+    <h1>{{count_text}}</h1>
+    <div class="ui-btn-left">
+        <a href="#panel_main" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-bars"></a>
+    </div>
+    <div class="ui-btn-right">
+        <a href="#" id="btn_expand" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-grid"></a>
+    </div>
+</script>
+
+<script id="post-footer-template" type="text/html">
+    <div data-role="navbar">
+        <ul>
+            <li class="footer-li">
+				<a href="#" id="btn_feed" class="footer-button ui-btn ui-btn-icon-notext ui-icon-carat-l"></a>
+			</li>
+        </ul>
+    </div>
+</script>
+
+<script id="post-page-template" type="text/html">
+    <div data-role="page" id="post_page">
+        <div role="main" class="main-content ui-content">
+            <div class="main-body" data-iscroll="">
+                <div class="comments-area ui-body ui-body-a ui-corner-all">            
+                    <h2>
+                        <table class="title-table">
+                        <tr>
+                            <td class="avatar-box"><img alt="{{pic_cls}}" class="ava avatar-icon" src="{{avatar}}"/></td>
+                            <td class="title-box">
+                                <div class="title-name" id="{{title_id}}">{{title}}</div>
+                                <div class="title-user">{{author}}</div>
+                            </td>
+                            <td class="date-box">
+                                <div>{{date_day}}</div>
+                                <div>{{date_time}}</div>
+                            </td>
+                        </tr>
+                        </table>
+                    </h2>
+
+                    <div id="inner_{{content_id}}" class="content-box ui-body ui-body-a ui-corner-all">{{content}}</div>
+                </div>
+
+                <div class="comments-area ui-body ui-body-a ui-corner-all">            
+                    <ul data-role="listview" class="comments-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="post-template" type="text/html">
+    <li class="content-item post-item" data-role="collapsible" data-collapsed="false"
+        data-inset="false" data-iconpos="right" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+
+        <h2>
+            <table class="title-table">
+            <tr>
+                <td class="avatar-box"><img alt="{{pic_cls}}" class="ava avatar-icon" src="{{avatar}}"/></td>
+                <td class="title-box" valign="top">
+                    <div class="title-date">{{date}}</div>
+                    <div class="title-user">{{poster}}</div>
+                </td>
+            </tr>
+            </table>
+        </h2>
+
+        <div class="post-content-box">        
+            <div id="{{body_id}}" class="content-box">{{body}}</div>
+            <div id="{{children_id}}"></div>
+        <div>
+    </li>
+</script>
+
+<script id="comments-area-template" type="text/html">
+    <div class="ui-body ui-body-a ui-corner-all comments-area">
+        <ul data-role="listview" id="{{list_id}}">
+        </ul>
+    </div>
+</script>
+
+

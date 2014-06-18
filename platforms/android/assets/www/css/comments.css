@@ -1,0 +1,14 @@
+/* Comments Page CSS */
+
+.comments-area {
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    padding-top: 0.9em;
+    padding-bottom: 0.9em;
+}
+
+.post-content-box {
+    padding-bottom: 0.2em;
+// 	background-color: red;
+}
+

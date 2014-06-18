@@ -1,0 +1,13 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {},
+    "installed_plugins": {
+        "org.apache.cordova.statusbar": {
+            "PACKAGE_NAME": "com.leoz.blogga"
+        }
+    },
+    "dependent_plugins": {}
+}
