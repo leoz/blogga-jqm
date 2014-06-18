@@ -39,7 +39,8 @@ function setHeaderLeftMargin() {
 // Set header width
 function setHeaderWidth() {
 	var w = $(window).width();
-	if (w > 800) {
+//	alert('Width: ' + w);
+	if (w > 480) {
 		if ($.mobile.activePage) {
 		    var id = $.mobile.activePage.attr('id');
 		    var cid = "#" + id + " .ui-content";
@@ -57,7 +58,7 @@ function setHeaderWidth() {
 		}
 	}
 
-	if (w < 799) {
+	if (w < 479) {
 		$("[data-role='header']").width(w);
 	}
 }
