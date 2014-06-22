@@ -190,15 +190,25 @@ window.db_userpics = {
 		}
 	},
     close: function() {
-		$.each(this.data, function( i, item ) {
-			console.log('User Pics Storage Close - removing pic : ' + item.user);
-			window.URL.revokeObjectURL(item.def);
-			item.def = null;
-			delete item.data;
-		});
-		delete this.data;
+		if (this.data) {
+			$.each(this.data, function( i, item ) {
+				console.log('User Pics Storage Close - removing pic : ' + item.user);
+				window.URL.revokeObjectURL(item.def);
+				item.def = null;
+				delete item.data;
+				if (item.pics) {
+					$.each(item.pics, function( j, url ) {
+						console.log('User Pics Storage Close - removing custom pic : ' + url);
+						window.URL.revokeObjectURL(url);
+					});
+					delete item.pics;
+					item.pics = null;
+				}
+			});
+			delete this.data;
+		}
 		this.data = {};
-		console.log('User Pics Storage Close : journals - ' + JSON.stringify(this.data));
+		console.log('User Pics Storage Close : userpics - ' + JSON.stringify(this.data));
 		localStorage.setItem(this.data_token, JSON.stringify(this.data));
 	}
 };

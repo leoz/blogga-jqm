@@ -7,10 +7,8 @@ $(function() {
     
     FastClick.attach(document.body);
 
-	// Init databases
-	window.db_blobs.init();
-	window.db_journals.init();
-	window.db_userpics.init();
+	closeDB();
+	openDB();
 
     // Set toolbars and panels
     $('[data-role="navbar"]').navbar();
@@ -83,9 +81,23 @@ $(document).on('pagecreate', '[data-role=page]', function(e) {
 
 $(window).on('unload beforeunload', function() {
     console.log('Window unload');
+//	closeDB();
+});
+
+function openDB() {
+	console.log('### openDB ###');
+	// Init databases
+	window.db_blobs.init();
+	window.db_journals.init();
+	window.db_userpics.init();
+}
+
+function closeDB() {
+	console.log('### closeDB ###');
 	// Close databases
 	window.db_blobs.close();
 	window.db_journals.close();
 	window.db_userpics.close();
-});
+}
+
 

@@ -8,7 +8,10 @@ window.db_blobs = {
 		this.db = new PouchDB(this.db_name);
 	},
     close: function() {
-		this.db.destroy();
+		if (this.db) {
+			this.db.destroy();
+			this.db = null;
+		}
 	}
 };
 
