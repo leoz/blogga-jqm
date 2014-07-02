@@ -117,7 +117,13 @@ function onFeed(data) {
     $('#header_main').html(ht);
     $('#header_main').toolbar('refresh');
 
-	$('#btn_expand').click(function() { onExpand(); });
+	$('#btn_expand').click(function() {
+
+		$(this).toggleClass('ui-icon-plus');
+		$(this).toggleClass('ui-icon-minus');
+
+		onExpand();
+	});
 	
     var ft = $.Mustache.render('feed-footer-template', data);
 
