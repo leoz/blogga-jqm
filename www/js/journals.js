@@ -19,14 +19,25 @@ function onChange() {
 
 	console.log('onChange - ' + name);
 
+	changeJournal(name, true);
+}
+
+function changeJournal(name, update) {
 	if (selectJournal(name)) {
 		setJournal(name);
 	}
 	else {
 		setTimeout(function() {
-		    $.livejournal.getuserpics(name,
-			                          testJournalSucceed,
-			                          testJournalFailed);
+			if (update) {
+				$.livejournal.getuserpics(name,
+					                      testJournalSucceed,
+					                      testJournalFailed);
+			}
+			else {
+				$.livejournal.getuserpics(name,
+					                      testJournalSucceedNoUpdate,
+					                      testJournalFailed);
+			}
 		}, 0);    
 	}
 }
@@ -40,6 +51,15 @@ function testJournalSucceed(data, name) {
 	addJournal(name, pic);
 	selectJournal(name);	
 	setJournal(name);
+}
+
+function testJournalSucceedNoUpdate(data, name) {
+	console.log('testJournalSucceedNoUpdate - ' + name);
+	
+	var pic = window.db_userpics.getUserPic(name);
+	selectJournal(name);	
+	setJournal(name);
+    $('#journal-input').val(name);
 }
 
 function testJournalFailed(name) {

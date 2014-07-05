@@ -32,6 +32,8 @@ function addRecord(i, records, user, id) {
 
 		var r_pic = formatUserPic(records[i], r_pic_id, id, user);
 
+		var r_author = formatAuthor(records[i], user);
+
         var feed_data = {
 			citem_id  : r_citem_id,
             collapsed : (!window.lj_conf.expanded),
@@ -42,7 +44,8 @@ function addRecord(i, records, user, id) {
             date_time : formatDateTime(records[i].eventtime),
             title_id  : r_title_id,
             title     : formatTitle(records[i], r_title_id, id),
-            author    : formatAuthor(records[i], user),
+            author    : r_author,
+			user_id   : 'btn_user_' + records[i].itemid,
             button_id : 'btn_' + records[i].itemid,
             count     : records[i].reply_count,
             count_text: formatCountText(records[i].reply_count),
@@ -56,6 +59,13 @@ function addRecord(i, records, user, id) {
         var t = $.Mustache.render('feed-template', feed_data);
 
         $(id).append(t).enhanceWithin();
+        
+	    $('#' + feed_data.user_id).click(function(e) {
+            onUser(r_author);
+            e.preventDefault();
+            e.stopPropagation();   
+            e.stopImmediatePropagation();
+	    });
         
 	    $('#' + feed_data.button_id).click(function(e) {
             onComments(feed_data);
@@ -75,6 +85,11 @@ function addRecord(i, records, user, id) {
             addRecord(i, records, user, id);
         }, 0);       
     }
+}
+
+function onUser(user) {
+	console.log('onUser: ' + user);
+	changeJournal(user, false);
 }
 
 function formatUserPic(record, id, parent_id, user) {

@@ -5,10 +5,26 @@
 }
 
 .avatar-box {
-	width: 5em;
+	width: 5.2em;
 	height: 5em;
     text-align: center;
-//	background-color: red;
+//	background-color: yellow;
+}
+
+.avatar-frame {
+    border-style: solid;
+    border-width: thin;
+    border-radius: 0.3em;
+    border-color: #DDDDDD;
+	width: 4.4em;
+	
+	margin-left: 0.3em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+
+	box-shadow: -2px 2px 1px 0px rgba(50, 50, 50, 0.7);
+    
+//    background-color: pink;
 }
 
 .avatar-icon {
