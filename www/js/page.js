@@ -124,9 +124,6 @@ window.pageController = {
 function createPageTitle() {
 	var s = '';
     s += getJournalPageTitle();
-    s += ' (';
-    s += (window.pageController.current + 1);
-    s += ')';
 	return s;
 }
 

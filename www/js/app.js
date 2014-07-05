@@ -50,7 +50,7 @@ $(document).on('pagecontainerbeforeshow', function(e, ui) {
     if (page_id != 'post_page' && page_id != 'main_page') {
 	    // Set title
         var title = activePage().data('title');
-        $('[data-role="header"] h1').text( title );
+        setHeaderText(title);
     }
     
     // Fix iscroll event handling for lazy image loading

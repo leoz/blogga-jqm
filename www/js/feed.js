@@ -51,7 +51,7 @@ function addRecord(i, records, user, id) {
             count_text: formatCountText(records[i].reply_count),
             content_id: r_content_id,
             content   : formatContent(records[i], r_content_id, id),
-            page_title: $('#header_main h1').text(),
+            page_title: getHeaderText(),
             itemid    : records[i].itemid,
             anum      : records[i].anum
         };

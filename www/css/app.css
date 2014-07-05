@@ -9,6 +9,15 @@
 	text-transform: uppercase !important;
 }
 
+.feed-header-count {
+	margin-left: 0.4em;
+	font-size: 0.8em;
+    padding: 0.2em 0.6em; 
+    border: 0.2em solid #E2E7EA;
+    border-radius: 2em;
+    background: #939EA7;
+}
+
 .header-button {
     text-align: center;
 	border-style: solid;

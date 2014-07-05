@@ -10,7 +10,10 @@
 </script>
 
 <script id="feed-header-template" type="text/html">
-    <h1>{{page_title}}</h1>
+    <h1>
+		<span class="feed-header-title">{{page_title}}</span>
+		<span class="feed-header-count">{{page_count}}</span>
+	</h1>
     <div class="ui-btn-left">
         <a href="#panel_main" class="header-button ui-btn ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-bars"></a>
     </div>

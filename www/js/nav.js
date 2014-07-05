@@ -99,7 +99,7 @@ function onHome() {
     console.log('onHome');
     window.lj_conf.reset();
     $('[data-role="page"]').remove();
-    $('[data-role="header"] h1').text( ' - ' );
+    setHeaderText(' - ');
     showInitialPage();
 	setButtons();
 }
@@ -121,6 +121,15 @@ function onExpand() {
 function activeListId(page) {
     var id = '#' + page.attr('id') + ' .main-content .feed-list';
     return id;
+}
+
+function getHeaderText() {
+	return $('[data-role="header"] h1 .feed-header-title').text();
+}
+
+function setHeaderText(s) {
+    $('[data-role="header"] h1 .feed-header-title').text(s);
+    $('[data-role="header"] h1 .feed-header-count').text(window.pageController.current + 1);
 }
 
 //
