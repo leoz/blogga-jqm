@@ -51,8 +51,12 @@
 		if (date) {
 			params['beforedate'] = date;
 		}
+		var lj_url = LJ_URL;
+		if (LJ_TEST) {
+		    lj_url = 'js/lib/test/events.xml';
+		}
 	    $.xmlrpc({
-	        url: LJ_URL,
+	        url: lj_url,
 	        methodName: lj_method,
 			params: [ params ],
 	        success: function(response, status, jqXHR) {
@@ -89,6 +93,7 @@
     // Global Private Variables
     var LJ_URL = 'http://www.livejournal.com/interface/xmlrpc';
     var LJ_DEBUG = true;
+    var LJ_TEST = true;
     
     // Global Private Functions        
     function log_success(method, response, status) {
