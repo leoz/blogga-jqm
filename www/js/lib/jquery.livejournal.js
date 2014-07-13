@@ -22,8 +22,12 @@
 
     $.livejournal.getuserpics = function(user, callback, cb_failed) {
         var lj_method = 'LJ.XMLRPC.getuserpics';
+		var lj_url = LJ_URL;
+		if (LJ_TEST) {
+		    lj_url = LJ_TEST_PATH + 'userpics.xml';
+		}
 	    $.xmlrpc({
-	        url: LJ_URL,
+	        url: lj_url,
 	        methodName: lj_method,
 	        params: [ {
 			    'ver'        : '1',
@@ -53,7 +57,7 @@
 		}
 		var lj_url = LJ_URL;
 		if (LJ_TEST) {
-		    lj_url = 'js/lib/test/events.xml';
+		    lj_url = LJ_TEST_PATH + 'events.xml';
 		}
 	    $.xmlrpc({
 	        url: lj_url,
@@ -72,8 +76,12 @@
     $.livejournal.getcomments = function(user, itemid, anum, id, callback) {
         var ditemid = itemid * 256 + anum;
         var lj_method = 'LJ.XMLRPC.getcomments';
+		var lj_url = LJ_URL;
+		if (LJ_TEST) {
+		    lj_url = LJ_TEST_PATH + 'comments.xml';
+		}        
 	    $.xmlrpc({
-	        url: LJ_URL,
+	        url: lj_url,
 	        methodName: lj_method,
 	        params: [ {
 			    'ver'     : '1',
@@ -93,7 +101,8 @@
     // Global Private Variables
     var LJ_URL = 'http://www.livejournal.com/interface/xmlrpc';
     var LJ_DEBUG = true;
-    var LJ_TEST = true;
+    var LJ_TEST_PATH = 'js/lib/test/'; // Change this path to match your app. structure
+    var LJ_TEST = false;
     
     // Global Private Functions        
     function log_success(method, response, status) {

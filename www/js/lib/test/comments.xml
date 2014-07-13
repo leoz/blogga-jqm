@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<methodResponse>
+<params><param>
+<value><struct>
+<member>
+<name>status</name>
+<value>
+<string>OK</string>
+</value>
+</member>
+<member>
+<name>comments</name>
+<value>
+<array><data>
+
+<value>
+<struct>
+    <member>
+        <name>dtalkid</name>
+        <value>
+            <int>101</int>
+        </value>
+    </member>
+    <member>
+        <name>postername</name>
+        <value>
+            <string>poster-101</string>
+        </value>
+    </member>
+    <member>
+        <name>body</name>
+        <value>
+            <string> Body # 101</string>
+        </value>
+    </member>
+    <member>
+        <name>datepostunix</name>
+        <value>
+            <int>1266408839</int>
+        </value>
+    </member> 
+</struct>
+</value>
+
+
+<value>
+<struct>
+    <member>
+        <name>dtalkid</name>
+        <value>
+            <int>102</int>
+        </value>
+    </member>
+    <member>
+        <name>postername</name>
+        <value>
+            <string>poster-102</string>
+        </value>
+    </member>
+    <member>
+        <name>body</name>
+        <value>
+            <string> Body # 102</string>
+        </value>
+    </member>
+    <member>
+        <name>datepostunix</name>
+        <value>
+            <int>1266408839</int>
+        </value>
+    </member>
+    
+    <member>
+        <name>children</name>
+        <value>
+            <array>
+            <data>
+            
+                <value>
+                <struct>
+                    <member>
+                        <name>dtalkid</name>
+                        <value>
+                            <int>201</int>
+                        </value>
+                    </member>
+                    <member>
+                        <name>postername</name>
+                        <value>
+                            <string>poster-201</string>
+                        </value>
+                    </member>
+                    <member>
+                        <name>body</name>
+                        <value>
+                            <string> Body # 201</string>
+                        </value>
+                    </member>
+                    <member>
+                        <name>datepostunix</name>
+                        <value>
+                            <int>1266408839</int>
+                        </value>
+                    </member> 
+                </struct>
+                </value>            
+            
+                <value>
+                <struct>
+                    <member>
+                        <name>dtalkid</name>
+                        <value>
+                            <int>202</int>
+                        </value>
+                    </member>
+                    <member>
+                        <name>postername</name>
+                        <value>
+                            <string>poster-202</string>
+                        </value>
+                    </member>
+                    <member>
+                        <name>body</name>
+                        <value>
+                            <string> Body # 202</string>
+                        </value>
+                    </member>
+                    <member>
+                        <name>datepostunix</name>
+                        <value>
+                            <int>1266408839</int>
+                        </value>
+                    </member> 
+                </struct>
+                </value>            
+            
+            </data>
+            </array>
+        </value>
+    </member>
+    
+</struct>
+</value>
+
+
+<value>
+<struct>
+    <member>
+        <name>dtalkid</name>
+        <value>
+            <int>103</int>
+        </value>
+    </member>
+    <member>
+        <name>postername</name>
+        <value>
+            <string>poster-103</string>
+        </value>
+    </member>
+    <member>
+        <name>body</name>
+        <value>
+            <string> Body # 103</string>
+        </value>
+    </member>
+    <member>
+        <name>datepostunix</name>
+        <value>
+            <int>1266408839</int>
+        </value>
+    </member> 
+</struct>
+</value>
+
+                                   
+</data>
+</array>
+</value>
+</member>
+</struct>
+</value>
+</param>
+</params>
+</methodResponse>
