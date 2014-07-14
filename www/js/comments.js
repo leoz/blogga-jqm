@@ -16,6 +16,8 @@ function onComments(data) {
     $('#footer_main').toolbar('refresh');
 	
 	$('#btn_feed').click(function() { onFeed(data); });
+	$('#btn_more').click(function() { onMore(); });
+    $('#btn_more').prop('disabled', true).addClass('ui-disabled');
 	
 	showCommentsPage(data);
 }
@@ -37,7 +39,7 @@ function showCommentsPage(data) {
     var id = '#' + 'post_page' + ' .main-content .comments-list';
 
     setTimeout(function() {
-        $.livejournal.getcomments(window.db_journals.current, data.itemid, data.anum, id, addComments);
+        $.livejournal.getcomments(window.db_journals.current, data.itemid, data.anum, id, addAllComments);
     }, 0);    
 }
 
@@ -50,11 +52,35 @@ function createCommentsPage(data) {
     });
 }
 
-function addComments(comments, id) {
+// Comments Controller
+
+window.commentsController = {
+    MAX_NUM : 10,
+	data : null,
+	current : 0,
+	max : this.MAX_NUM,
+    reset: function () {
+        this.data = null;
+        this.current = 0;
+		this.max = this.MAX_NUM;
+    },
+    set: function () {
+//        this.data = null;
+        this.current = 0;
+		this.max = this.max + this.MAX_NUM;
+    },
+    canAdd: function () {
+        return this.max >= this.current;
+    }  
+};
+
+function addAllComments(comments, id) {
 
     setTimeout(function() {
+        window.commentsController.reset();
+        window.commentsController.data = comments;
         var i = 0;
-        addComment(i, comments, id);
+        addComment(i, window.commentsController.data, id);
     }, 0);
              
     setTimeout(function() {
@@ -65,47 +91,69 @@ function addComments(comments, id) {
 function addComment(i, comments, id) {
 
     if (i < comments.length) {
-        console.log('addComment: ' + i + ' ' + comments.length);
-
-        var r_body_id = 'body_' + comments[i].dtalkid;
-        var r_children_id = 'children_' + comments[i].dtalkid;
-
-		var r_pic_cls = '';
-		var r_avatar = window.db_userpics.defpic;
-
-		if (comments[i].hasOwnProperty('postername')) {
-			var poster = comments[i].postername;
-		    r_pic_cls = window.db_userpics.prefix + poster;
-			r_avatar = window.db_userpics.getUserPic(poster);
-		}
-
-        var comment_data = {
-			pic_cls    : r_pic_cls,
-			avatar     : r_avatar,
-            date       : formatUnixDate(comments[i].datepostunix),
-            body_id    : r_body_id,
-            body       : formatBody(comments[i], r_body_id, id),
-            poster     : formatPoster(comments[i]),
-            children_id: r_children_id
-        };
-
-        var t = $.Mustache.render('post-template', comment_data);
-
-        $(id).append(t).enhanceWithin();
-
-        $('.post-item .ui-collapsible-content').autumn();
-
-        $(id).listview('refresh');
-
-        setTimeout(function() {
-            addChildren(comments[i], '#' + r_children_id);
-        }, 0);
+        window.commentsController.current++;
+        console.log('addComment: num - ' + i + ' total - ' + comments.length + ' count - ' + window.commentsController.current);
         
-        setTimeout(function() {
-            i++;
-            addComment(i, comments, id);
-        }, 0);
+        if (window.commentsController.canAdd()) {
+        
+            var r_body_id = 'body_' + comments[i].dtalkid;
+            var r_children_id = 'children_' + comments[i].dtalkid;
+
+		    var r_pic_cls = '';
+		    var r_avatar = window.db_userpics.defpic;
+
+		    if (comments[i].hasOwnProperty('postername')) {
+			    var poster = comments[i].postername;
+		        r_pic_cls = window.db_userpics.prefix + poster;
+			    r_avatar = window.db_userpics.getUserPic(poster);
+		    }
+
+            var comment_data = {
+			    pic_cls    : r_pic_cls,
+			    avatar     : r_avatar,
+                date       : formatUnixDate(comments[i].datepostunix),
+                body_id    : r_body_id,
+                body       : formatBody(comments[i], r_body_id, id),
+                poster     : formatPoster(comments[i]),
+                children_id: r_children_id
+            };
+
+            var t = $.Mustache.render('post-template', comment_data);
+
+            $(id).append(t).enhanceWithin();
+
+            $('.post-item .ui-collapsible-content').autumn();
+
+            $(id).listview('refresh');
+
+            setTimeout(function() {
+                addChildren(comments[i], '#' + r_children_id);
+            }, 0);
+            
+            setTimeout(function() {
+                i++;
+                addComment(i, comments, id);
+            }, 0);
+        }
+        else {                
+            $('#btn_more').prop('disabled', true).removeClass('ui-disabled');
+
+            var t = $.Mustache.render('post-more-template');
+            $(id).append(t).enhanceWithin();
+            $(id).listview('refresh');
+        }
     }
+}
+
+function onMore() {
+    var list_id = '#' + 'post_page' + ' .main-content .comments-list';
+    $(list_id).empty();
+    $('#btn_more').prop('disabled', true).addClass('ui-disabled');
+
+    window.commentsController.set();
+
+    var i = 0;
+    addComment(i, window.commentsController.data, list_id);
 }
 
 function addChildren(comment, id) {

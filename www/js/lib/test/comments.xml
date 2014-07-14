@@ -101,7 +101,79 @@
                         <value>
                             <int>1266408839</int>
                         </value>
-                    </member> 
+                    </member>
+                    
+                    
+                    <member>
+                        <name>children</name>
+                        <value>
+                            <array>
+                            <data>
+                            
+                                <value>
+                                <struct>
+                                    <member>
+                                        <name>dtalkid</name>
+                                        <value>
+                                            <int>301</int>
+                                        </value>
+                                    </member>
+                                    <member>
+                                        <name>postername</name>
+                                        <value>
+                                            <string>poster-301</string>
+                                        </value>
+                                    </member>
+                                    <member>
+                                        <name>body</name>
+                                        <value>
+                                            <string> Body # 301</string>
+                                        </value>
+                                    </member>
+                                    <member>
+                                        <name>datepostunix</name>
+                                        <value>
+                                            <int>1266408839</int>
+                                        </value>
+                                    </member> 
+                                </struct>
+                                </value>            
+                            
+                                <value>
+                                <struct>
+                                    <member>
+                                        <name>dtalkid</name>
+                                        <value>
+                                            <int>302</int>
+                                        </value>
+                                    </member>
+                                    <member>
+                                        <name>postername</name>
+                                        <value>
+                                            <string>poster-302</string>
+                                        </value>
+                                    </member>
+                                    <member>
+                                        <name>body</name>
+                                        <value>
+                                            <string> Body # 302</string>
+                                        </value>
+                                    </member>
+                                    <member>
+                                        <name>datepostunix</name>
+                                        <value>
+                                            <int>1266408839</int>
+                                        </value>
+                                    </member> 
+                                </struct>
+                                </value>            
+                            
+                            </data>
+                            </array>
+                        </value>
+                    </member>
+                    
+                    
                 </struct>
                 </value>            
             
